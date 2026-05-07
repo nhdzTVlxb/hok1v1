@@ -1,9 +1,5 @@
 [app]
 
-# 2025 top1 final runs intentionally slept the learner to keep sample
-# production/consumption healthier on Kaiwu. Keep it explicit this year.
-learner_train_sleep_seconds = 2.00
-
 # Replay buffer configurations
 # 样本池容量
 replay_buffer_capacity = 5000
