@@ -122,3 +122,127 @@
 3. feature 中兵线和塔危险区的特征。
 4. 等 feature 稳定后，再进一步增强 LSTM 或做更复杂 reward。
 
+## 2026-05-08 追加：安全推塔与红方移动修复
+
+### 背景
+
+局内观察发现：
+
+- agent 已经能离开泉水，会补兵、刷野。
+- 但在安全窗口不会主动攻击防御塔。
+- 自训练对战时，蓝方能赢，红方会往反方向移动，卡在出生点附近。
+- reward 图仍可能显示为 0，loss 变化较小。
+
+这说明基础 feature/reward 已经让智能体“活了”，但推塔目标和红蓝方对称性还不够明确。
+
+### 安全推塔定义
+
+这次把“安全推塔”明确成以下条件：
+
+- 敌方防御塔正在攻击我方小兵。
+- 我方英雄已经在可攻击敌塔的距离内。
+- 敌方英雄阵亡、不可见，或者不在我方英雄的危险范围内。
+- 敌塔没有正在攻击我方英雄。
+
+对应改动：
+
+- `agent_ppo/feature/top1_feature_builder.py`
+  - 增加 `safe_push` 特征。
+  - 增加 `tower_tanking_minion` 特征。
+  - 增加 `enemy_threat` 特征。
+- `agent_ppo/feature/reward_process.py`
+  - 增加 `tower_attack` reward。
+  - 增加 `safe_push` reward。
+- `agent_ppo/conf/conf.py`
+  - 增加 `tower_attack: 0.25`。
+  - 增加 `safe_push: 0.04`。
+- `agent_ppo/agent.py`
+  - fallback action 在安全推塔窗口优先选择普通攻击敌方防御塔。
+  - 目标 7 沿用 2025 top1 target 约定，表示敌方 organ/tower。
+
+### 红方反向移动问题
+
+观察到红方卡在出生点、往反方向移动，主要怀疑两类问题：
+
+1. 红蓝方视角没有统一。
+2. 不可见敌方英雄的坐标 `100000,100000,100000` 被当成真实移动目标。
+
+本次改动：
+
+- `agent_ppo/feature/top1_feature_builder.py`
+  - 当 `camp == 2` 时，对 feature 中的位置做镜像，让红方也以“我方向敌方推进”的统一视角看地图。
+- `agent_ppo/agent.py`
+  - fallback move 不再把不可见英雄的 `100000` 坐标作为移动目标。
+  - 如果没有合适敌人或小兵，会优先向最近敌方防御塔移动，而不是默认走向错误方向。
+
+说明：
+
+- 这次先修最可能导致红方反向走的实际 bug：不可见目标坐标污染移动目标。
+- 暂未做完整 action 坐标反向映射，因为动作 mask / PPO label 也要同步镜像，否则容易引入新的训练标签错位。若后续红方仍反向，再单独做 action mirror。
+
+### loss 与 reward 观察
+
+如果 `kill_common_ai` 高于 `death_common_ai`，说明行为本身不是崩的。
+
+如果 reward 图仍是 0、loss 几乎不动，优先判断：
+
+- reward 可能被监控 round 成 0。
+- reward 可能主要来自稀疏事件，平均后很小。
+- policy/value loss 变化小，说明训练信号仍偏弱。
+
+下一轮观察重点：
+
+- 安全窗口是否开始攻击敌塔。
+- `enemy_tower_hp_common_ai` 是否下降更明显。
+- 红方自训练是否还会往出生点反方向走。
+- `hurt_to_hero` 是否保持，`death` 是否不要明显上升。
+- `reward` / `total_loss` / `policy_loss` / `value_loss` 是否开始有非零变化。
+
+如果推塔仍弱，下一步优先继续加密 tower reward，而不是先加大模型。
+
+## 2026-05-08 追加：塔伤诊断、攻击奖励与镜像修复
+
+### 这次主要修什么
+
+- 修正 `camp_id()`：
+  - 之前把整数 `1` 误映射成 `2`，可能导致蓝/红阵营、敌我塔、红方镜像判断错位。
+  - 现在只有 `0` 会兼容映射到 `1`，`1/2` 保持原值。
+- 新增 `agent_ppo/diagnostics.py`：
+  - 从每帧 `frame_state` 和实际 action 中统计塔伤、英雄造成塔伤、安全推塔窗口、普攻频率、攻击力、攻速。
+- 修改 `agent_ppo/workflow/train_workflow.py`：
+  - 每局累计诊断数据，并上报到 monitor。
+- 修改 `agent_ppo/conf/monitor_builder.py`：
+  - 新增塔伤、安全推塔帧、攻击频率、攻击属性、打塔动作面板。
+- 修改 `agent_ppo/feature/reward_process.py`：
+  - 新增 `attack_hit`、`attack_power`、`attack_speed`、`safe_tower_damage` reward。
+  - 安全推塔时，英雄真实命中防御塔并造成塔血下降，给高奖励。
+  - 被塔攻击或低血进塔区的惩罚加重。
+- 修改 `agent_ppo/agent.py`：
+  - 安全推塔窗口内强制优先普通攻击防御塔目标 7。
+  - 如果敌方防御塔正在攻击自己，优先离开塔区。
+
+### 新增监控含义
+
+- `diy_6`：敌方塔总掉血，可能包含小兵伤害。
+- `diy_7`：估算的英雄对敌方塔伤害，要求同帧英雄在打塔/命中塔。
+- `diy_8`：安全推塔窗口帧数。
+- `diy_9`：安全推塔窗口内选择普攻塔的帧数。
+- `diy_10`：英雄处于打塔/命中塔的帧数。
+- `diy_11`：平均物理攻击力 `phy_atk`。
+- `diy_12`：平均攻速 `atk_spd`。
+- `diy_13`：每 1000 帧命中目标次数。
+- `diy_14`：每 1000 帧普通攻击动作次数。
+- `diy_15`：平均命中间隔帧数，越低表示攻击越频繁。
+- `diy_16`：本局物理攻击力增长。
+- `diy_17`：本局攻速增长。
+- `diy_18`：普攻塔目标 7 合法的帧数。
+- `diy_19`：实际选择普攻塔目标 7 的帧数。
+- `diy_20`：自己被敌塔锁定的帧数。
+
+### 下一轮重点看
+
+- `diy_8 > 0` 且 `diy_18 > 0` 时，`diy_19` 应该同步上升。
+- `diy_19 > 0` 后，`diy_7` 应该开始大于 0。
+- 如果 `diy_8/diy_18` 有，但 `diy_19=0`，说明动作目标 7 仍未正确生效。
+- 如果 `diy_19` 有但 `diy_7=0`，说明 target 7 可能不是塔，或 hit/tower hp 对齐方式还要继续查。
+- 红方仍不出门时，优先看是否仍有阵营识别错误，而不是先调 reward。
