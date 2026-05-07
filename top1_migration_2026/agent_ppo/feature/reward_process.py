@@ -16,8 +16,12 @@ def get_any(d, *keys, default=None):
 
 
 def camp_id(camp):
-    if isinstance(camp, str) and camp[-1:].isdigit():
-        return int(camp[-1])
+    if isinstance(camp, str):
+        if camp in ("0", "1", "2"):
+            value = int(camp)
+            return value + 1 if value in (0, 1) else value
+        if camp[-1:].isdigit():
+            return int(camp[-1])
     if isinstance(camp, int):
         return camp + 1 if camp in (0, 1) else camp
     return camp
@@ -55,9 +59,9 @@ def init_calc_frame_map():
 
 
 class GameRewardManager:
-    def __init__(self, main_hero_runtime_id):
+    def __init__(self, main_hero_runtime_id, main_hero_camp=None):
         self.main_hero_player_id = main_hero_runtime_id
-        self.main_hero_camp = -1
+        self.main_hero_camp = camp_id(main_hero_camp) if main_hero_camp is not None else -1
         self.m_reward_value = {}
         self.m_cur_calc_frame_map = init_calc_frame_map()
         self.m_main_calc_frame_map = init_calc_frame_map()
@@ -177,6 +181,13 @@ class GameRewardManager:
                 self.main_hero_camp = main_camp
             else:
                 enemy_camp = camp_id(hero.get("camp"))
+        if main_camp == -1 and self.main_hero_camp != -1:
+            main_camp = self.main_hero_camp
+            for hero in frame_data.get("hero_states", []):
+                hero_camp = camp_id(hero.get("camp"))
+                if hero_camp != main_camp:
+                    enemy_camp = hero_camp
+                    break
         self.set_cur_calc_frame_vec(self.m_main_calc_frame_map, frame_data, main_camp)
         self.set_cur_calc_frame_vec(self.m_enemy_calc_frame_map, frame_data, enemy_camp)
 
@@ -205,7 +216,10 @@ class GameRewardManager:
             elif reward_name == "exp":
                 main_hero = None
                 for hero in frame_data.get("hero_states", []):
-                    if get_any(hero, "runtime_id", "player_id", default=None) == self.main_hero_player_id:
+                    if (
+                        get_any(hero, "runtime_id", "player_id", default=None) == self.main_hero_player_id
+                        or camp_id(hero.get("camp")) == self.main_hero_camp
+                    ):
                         main_hero = hero
                         break
                 if main_hero and (get_any(main_hero, "level", default=1) or 1) >= 15:
