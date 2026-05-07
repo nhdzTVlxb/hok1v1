@@ -14,6 +14,7 @@ torch.set_num_threads(1)
 torch.set_num_interop_threads(1)
 
 import os
+import math
 from agent_ppo.model.model import Model
 from agent_ppo.feature.definition import *
 import numpy as np
@@ -219,11 +220,20 @@ class Agent(BaseAgent):
         if is_stochastic:
             # Use stochastic sampling action
             # 采用随机采样动作 action
-            return act_data.action
+            action = act_data.action
         else:
             # Use the action with the highest probability
             # 采用最大概率动作 d_action
-            return act_data.d_action
+            action = act_data.d_action
+
+        fallback_action = self._fallback_active_action(observation, action)
+        if fallback_action is not None:
+            if is_stochastic:
+                act_data.action = fallback_action
+            else:
+                act_data.d_action = fallback_action
+            return fallback_action
+        return action
 
     def _low_hp_heal_action(self, observation):
         hero = self._main_hero_state(observation)
@@ -270,6 +280,89 @@ class Agent(BaseAgent):
             if camp_id(hero.get("camp")) == player_camp:
                 return hero
         return None
+
+    def _fallback_active_action(self, observation, action):
+        if not action or action[0] not in GameConfig.PASSIVE_BUTTONS:
+            return None
+
+        legal_actions = self._split_legal_actions(observation)
+        if legal_actions is None:
+            return None
+
+        attack_action = self._attack_fallback_action(observation, legal_actions)
+        if attack_action is not None:
+            return attack_action
+        return self._move_fallback_action(observation, legal_actions)
+
+    def _split_legal_actions(self, observation):
+        legal_action = np.array(observation.get("legal_action", []), dtype=np.float32)
+        if legal_action.size != sum(self.legal_action_size):
+            return None
+        split_points = [sum(self.label_size_list[: index + 1]) for index in range(len(self.label_size_list))]
+        return np.split(legal_action, split_points[:-1])
+
+    def _attack_fallback_action(self, observation, legal_actions):
+        button = 3
+        if legal_actions[0][button] <= 0:
+            return None
+        target_legal = legal_actions[-1].reshape([self.legal_action_size[0], self.label_size_list[-1]])[button]
+        for target in [1, 3, 4, 5, 6, 7]:
+            if target_legal[target] > 0:
+                return [button, 0, 0, 0, 0, target]
+        return None
+
+    def _move_fallback_action(self, observation, legal_actions):
+        button = 2
+        if legal_actions[0][button] <= 0:
+            return None
+
+        hero = self._main_hero_state(observation)
+        target = self._preferred_move_target(observation)
+        if not hero or target is None:
+            return None
+
+        move_x, move_z = self._delta_action_16x16(self._actor_pos(hero), target)
+        if legal_actions[1][move_x] <= 0:
+            move_x = int(np.argmax(legal_actions[1]))
+        if legal_actions[2][move_z] <= 0:
+            move_z = int(np.argmax(legal_actions[2]))
+        return [button, move_x, move_z, 0, 0, 0]
+
+    def _preferred_move_target(self, observation):
+        frame_state = observation.get("frame_state", {})
+        player_camp = camp_id(observation.get("camp", observation.get("player_camp", self.hero_camp)))
+        hero = self._main_hero_state(observation)
+        if not hero:
+            return None
+        hero_pos = self._actor_pos(hero)
+
+        candidates = []
+        for other in frame_state.get("hero_states", []):
+            if camp_id(other.get("camp")) != player_camp and float(other.get("hp", 0) or 0) > 0:
+                candidates.append(other)
+        for npc in frame_state.get("npc_states", []):
+            if camp_id(npc.get("camp")) != player_camp and float(npc.get("hp", 0) or 0) > 0:
+                candidates.append(npc)
+        if not candidates:
+            return [0.0, 0.0]
+        return self._actor_pos(min(candidates, key=lambda actor: math.dist(hero_pos, self._actor_pos(actor))))
+
+    def _actor_pos(self, actor):
+        loc = actor.get("location", {}) if isinstance(actor, dict) else {}
+        if isinstance(loc, dict):
+            return [float(loc.get("x", 0) or 0), float(loc.get("z", 0) or 0)]
+        if isinstance(loc, (list, tuple)) and len(loc) >= 3:
+            return [float(loc[0] or 0), float(loc[2] or 0)]
+        return [0.0, 0.0]
+
+    def _delta_action_16x16(self, center, target):
+        delta = np.array(target, dtype=np.float32) - np.array(center, dtype=np.float32)
+        max_abs = float(np.max(np.abs(delta)))
+        if max_abs <= 1e-6:
+            return 8, 8
+        grid = np.ceil(delta / max_abs * 7).astype(np.int32) + np.array([8, 8], dtype=np.int32)
+        grid = np.clip(grid, 0, 15)
+        return int(grid[0]), int(grid[1])
 
     def learn(self, list_sample_data):
         return self.algorithm.learn(list_sample_data)
