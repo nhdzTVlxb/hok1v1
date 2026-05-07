@@ -23,6 +23,7 @@ from tools.env_conf_manager import EnvConfManager
 from tools.model_pool_utils import get_valid_model_pool
 from tools.metrics_utils import get_training_metrics
 from common_python.utils.workflow_disaster_recovery import handle_disaster_recovery
+from agent_ppo.diagnostics import CombatDiagnostics
 
 
 def workflow(envs, agents, logger=None, monitor=None, *args, **kwargs):
@@ -81,6 +82,7 @@ class EpisodeRunner:
         self.agent_num = len(agents)
         self.episode_cnt = 0
         self.last_report_monitor_time = 0
+        self.diagnostics = CombatDiagnostics(self.agent_num)
 
     def _call_init_config(self, usr_conf):
         """Call init_config on both agents to get summoner skill selections,
@@ -162,6 +164,7 @@ class EpisodeRunner:
             # Reset environment frame collector
             # 重置环境帧收集器
             frame_collector = FrameCollector(self.agent_num)
+            self.diagnostics.reset()
 
             # Game variables
             # 对局变量
@@ -174,6 +177,10 @@ class EpisodeRunner:
                 "tower_hp_point_weight": [0] * self.agent_num,
                 "kill_weight": [0] * self.agent_num,
                 "last_hit_weight": [0] * self.agent_num,
+                "attack_hit_weight": [0] * self.agent_num,
+                "attack_power_weight": [0] * self.agent_num,
+                "attack_speed_weight": [0] * self.agent_num,
+                "safe_tower_damage_weight": [0] * self.agent_num,
             }
             is_train_test = os.environ.get("is_train_test", "False").lower() == "true"
             self.logger.info(f"Episode {self.episode_cnt} start, usr_conf is {usr_conf}")
@@ -221,6 +228,10 @@ class EpisodeRunner:
                 terminated = env_obs["terminated"]
                 truncated = env_obs["truncated"]
 
+                for i, action in enumerate(actions):
+                    if self.do_predicts[i]:
+                        self.diagnostics.observe(i, observation[str(i)], action)
+
                 # Reward generation
                 # 计算回报，作为当前环境状态observation的一部分
                 for i, (do_sample, agent) in enumerate(zip(self.do_samples, self.agents)):
@@ -250,17 +261,35 @@ class EpisodeRunner:
                     if now - self.last_report_monitor_time >= 60:
                         monitor_data = {"episode_cnt": self.episode_cnt}
                         if self.monitor:
+                            report_index = monitor_side
                             if is_eval:
                                 monitor_data["reward"] = round(reward_sum_dict["reward_sum"][monitor_side], 2)
                                 monitor_data["diy_5"] = round(reward_sum_dict["hp_point_weight"][monitor_side], 2)
                             else:
                                 for i, do_sample in enumerate(self.do_samples):
                                     if do_sample:
+                                        report_index = i
                                         monitor_data["diy_1"] = round(reward_sum_dict["reward_sum"][i], 2)
                                         monitor_data["diy_2"] = round(reward_sum_dict["hp_point_weight"][i], 2)
                                         monitor_data["diy_3"] = round(reward_sum_dict["money_weight"][i], 2)
                                         monitor_data["diy_4"] = round(reward_sum_dict["tower_hp_point_weight"][i], 2)
                                         break
+                            metrics = self.diagnostics.episode_metrics(report_index)
+                            monitor_data["diy_6"] = round(metrics["tower_damage"], 2)
+                            monitor_data["diy_7"] = round(metrics["hero_tower_damage"], 2)
+                            monitor_data["diy_8"] = round(metrics["safe_push_frames"], 2)
+                            monitor_data["diy_9"] = round(metrics["safe_push_attack_frames"], 2)
+                            monitor_data["diy_10"] = round(metrics["tower_hit_frames"], 2)
+                            monitor_data["diy_11"] = round(metrics["avg_phy_atk"], 2)
+                            monitor_data["diy_12"] = round(metrics["avg_atk_spd"], 2)
+                            monitor_data["diy_13"] = round(metrics["hit_per_1000"], 2)
+                            monitor_data["diy_14"] = round(metrics["normal_attack_per_1000"], 2)
+                            monitor_data["diy_15"] = round(metrics["avg_attack_interval"], 2)
+                            monitor_data["diy_16"] = round(metrics["phy_atk_gain"], 2)
+                            monitor_data["diy_17"] = round(metrics["atk_spd_gain"], 2)
+                            monitor_data["diy_18"] = round(metrics["tower_target_legal_frames"], 2)
+                            monitor_data["diy_19"] = round(metrics["tower_target_action_frames"], 2)
+                            monitor_data["diy_20"] = round(metrics["tower_targeted_me_frames"], 2)
                             self.monitor.put_data({os.getpid(): monitor_data})
                             self.last_report_monitor_time = now
 
