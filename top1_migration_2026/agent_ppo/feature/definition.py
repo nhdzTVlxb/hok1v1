@@ -64,6 +64,18 @@ SampleData = create_cls(
 NONE_ACTION = [0, 15, 15, 15, 15, 0]
 
 
+def camp_id(camp):
+    if isinstance(camp, str):
+        if camp in ("0", "1", "2"):
+            value = int(camp)
+            return value + 1 if value in (0, 1) else value
+        if camp[-1:].isdigit():
+            return int(camp[-1])
+    if isinstance(camp, int):
+        return camp + 1 if camp in (0, 1) else camp
+    return camp
+
+
 def sample_process(collector):
     return collector.sample_process()
 
@@ -76,10 +88,11 @@ def build_frame(agent, observation):
     frame_state = observation["frame_state"]
     hero_list = frame_state["hero_states"]
     frame_no = frame_state["frame_no"]
+    agent_camp = camp_id(agent.hero_camp)
     for hero in hero_list:
-        hero_camp = hero["camp"]
+        hero_camp = camp_id(hero["camp"])
         hero_hp = hero["hp"]
-        if hero_camp == agent.hero_camp:
+        if hero_camp == agent_camp:
             is_train = True if hero_hp > 0 else False
 
     if obs_data.feature is not None:
