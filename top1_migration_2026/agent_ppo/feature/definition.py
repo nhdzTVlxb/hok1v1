@@ -68,11 +68,11 @@ def camp_id(camp):
     if isinstance(camp, str):
         if camp in ("0", "1", "2"):
             value = int(camp)
-            return value + 1 if value in (0, 1) else value
+            return 1 if value == 0 else value
         if camp[-1:].isdigit():
             return int(camp[-1])
     if isinstance(camp, int):
-        return camp + 1 if camp in (0, 1) else camp
+        return 1 if camp == 0 else camp
     return camp
 
 
