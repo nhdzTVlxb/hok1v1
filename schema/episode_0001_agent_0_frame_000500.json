@@ -1,0 +1,3099 @@
+{
+  "type": "dict",
+  "keys": [
+    "episode",
+    "frame_no",
+    "agent_index",
+    "usr_conf",
+    "extra_info",
+    "env_meta",
+    "observation"
+  ],
+  "fields": {
+    "episode": {
+      "type": "int",
+      "example": 1
+    },
+    "frame_no": {
+      "type": "int",
+      "example": 500
+    },
+    "agent_index": {
+      "type": "int",
+      "example": 0
+    },
+    "usr_conf": {
+      "type": "dict",
+      "keys": [
+        "monitor",
+        "episode",
+        "lineups"
+      ],
+      "fields": {
+        "monitor": {
+          "type": "dict",
+          "keys": [
+            "monitor_side",
+            "auto_switch_monitor_side"
+          ],
+          "fields": {
+            "monitor_side": {
+              "type": "int",
+              "example": 1
+            },
+            "auto_switch_monitor_side": {
+              "type": "bool",
+              "example": true
+            }
+          }
+        },
+        "episode": {
+          "type": "dict",
+          "keys": [
+            "opponent_agent",
+            "eval_interval",
+            "eval_opponent_type"
+          ],
+          "fields": {
+            "opponent_agent": {
+              "type": "str",
+              "example": "selfplay"
+            },
+            "eval_interval": {
+              "type": "int",
+              "example": 32
+            },
+            "eval_opponent_type": {
+              "type": "str",
+              "example": "common_ai"
+            }
+          }
+        },
+        "lineups": {
+          "type": "dict",
+          "keys": [
+            "blue_camp",
+            "red_camp"
+          ],
+          "fields": {
+            "blue_camp": {
+              "type": "list",
+              "len": 1,
+              "samples": [
+                {
+                  "type": "dict",
+                  "keys": [
+                    "hero_id",
+                    "select_skill"
+                  ],
+                  "fields": {
+                    "hero_id": {
+                      "type": "int",
+                      "example": 133
+                    },
+                    "select_skill": {
+                      "type": "int",
+                      "example": 80102
+                    }
+                  }
+                }
+              ]
+            },
+            "red_camp": {
+              "type": "list",
+              "len": 1,
+              "samples": [
+                {
+                  "type": "dict",
+                  "keys": [
+                    "hero_id",
+                    "select_skill"
+                  ],
+                  "fields": {
+                    "hero_id": {
+                      "type": "int",
+                      "example": 112
+                    },
+                    "select_skill": {
+                      "type": "int",
+                      "example": 80102
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "extra_info": {
+      "type": "dict",
+      "keys": [
+        "result_code",
+        "result_message"
+      ],
+      "fields": {
+        "result_code": {
+          "type": "int",
+          "example": 0
+        },
+        "result_message": {
+          "type": "str",
+          "example": "ok"
+        }
+      }
+    },
+    "env_meta": {
+      "type": "dict",
+      "keys": [
+        "lineup",
+        "is_eval",
+        "monitor_side",
+        "terminated",
+        "truncated"
+      ],
+      "fields": {
+        "lineup": {
+          "type": "list",
+          "len": 2,
+          "samples": [
+            {
+              "type": "int",
+              "example": 133
+            },
+            {
+              "type": "int",
+              "example": 112
+            }
+          ]
+        },
+        "is_eval": {
+          "type": "bool",
+          "example": false
+        },
+        "monitor_side": {
+          "type": "int",
+          "example": 1
+        },
+        "terminated": {
+          "type": "bool",
+          "example": false
+        },
+        "truncated": {
+          "type": "bool",
+          "example": false
+        }
+      }
+    },
+    "observation": {
+      "type": "dict",
+      "keys": [
+        "player_id",
+        "camp",
+        "feature",
+        "legal_action",
+        "sub_action_mask",
+        "score",
+        "frame_state",
+        "reward"
+      ],
+      "fields": {
+        "player_id": {
+          "type": "int",
+          "example": 7
+        },
+        "camp": {
+          "type": "int",
+          "example": 1
+        },
+        "feature": {
+          "type": "list",
+          "len": 0,
+          "samples": []
+        },
+        "legal_action": {
+          "type": "list",
+          "len": 184,
+          "samples": [
+            {
+              "type": "float",
+              "example": 0.0
+            },
+            {
+              "type": "float",
+              "example": 1.0
+            },
+            {
+              "type": "float",
+              "example": 1.0
+            }
+          ]
+        },
+        "sub_action_mask": {
+          "type": "dict",
+          "keys": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11"
+          ],
+          "fields": {
+            "0": {
+              "type": "list",
+              "len": 6,
+              "samples": [
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                }
+              ]
+            },
+            "1": {
+              "type": "list",
+              "len": 6,
+              "samples": [
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                }
+              ]
+            },
+            "2": {
+              "type": "list",
+              "len": 6,
+              "samples": [
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 1.0
+                }
+              ]
+            },
+            "3": {
+              "type": "list",
+              "len": 6,
+              "samples": [
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                }
+              ]
+            },
+            "4": {
+              "type": "list",
+              "len": 6,
+              "samples": [
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                }
+              ]
+            },
+            "5": {
+              "type": "list",
+              "len": 6,
+              "samples": [
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                }
+              ]
+            },
+            "6": {
+              "type": "list",
+              "len": 6,
+              "samples": [
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                }
+              ]
+            },
+            "7": {
+              "type": "list",
+              "len": 6,
+              "samples": [
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                }
+              ]
+            },
+            "8": {
+              "type": "list",
+              "len": 6,
+              "samples": [
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                }
+              ]
+            },
+            "9": {
+              "type": "list",
+              "len": 6,
+              "samples": [
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                }
+              ]
+            },
+            "10": {
+              "type": "list",
+              "len": 6,
+              "samples": [
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                }
+              ]
+            },
+            "11": {
+              "type": "list",
+              "len": 6,
+              "samples": [
+                {
+                  "type": "float",
+                  "example": 1.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                },
+                {
+                  "type": "float",
+                  "example": 0.0
+                }
+              ]
+            }
+          }
+        },
+        "score": {
+          "type": "list",
+          "len": 1,
+          "samples": [
+            {
+              "type": "int",
+              "example": 0
+            }
+          ]
+        },
+        "frame_state": {
+          "type": "dict",
+          "keys": [
+            "frame_no",
+            "hero_states",
+            "npc_states",
+            "bullets",
+            "cakes",
+            "frame_action",
+            "map_state"
+          ],
+          "fields": {
+            "frame_no": {
+              "type": "int",
+              "example": 500
+            },
+            "hero_states": {
+              "type": "list",
+              "len": 2,
+              "samples": [
+                {
+                  "type": "dict",
+                  "keys": [
+                    "player_id",
+                    "config_id",
+                    "runtime_id",
+                    "actor_type",
+                    "sub_type",
+                    "camp",
+                    "behav_mode",
+                    "location",
+                    "forward",
+                    "hp",
+                    "max_hp",
+                    "abilities",
+                    "attack_range",
+                    "attack_target",
+                    "kill_income",
+                    "hit_target_info",
+                    "camp_visible",
+                    "sight_area",
+                    "phy_atk",
+                    "phy_def",
+                    "mgc_atk",
+                    "mgc_def",
+                    "mov_spd",
+                    "atk_spd",
+                    "ep",
+                    "max_ep",
+                    "hp_recover",
+                    "ep_recover",
+                    "phy_armor_hurt",
+                    "mgc_armor_hurt",
+                    "crit_rate",
+                    "crit_effe",
+                    "phy_vamp",
+                    "mgc_vamp",
+                    "cd_reduce",
+                    "ctrl_reduce",
+                    "skill_state",
+                    "equip_state",
+                    "buff_state",
+                    "level",
+                    "exp",
+                    "money",
+                    "revive_time",
+                    "kill_cnt",
+                    "dead_cnt",
+                    "assist_cnt",
+                    "money_cnt",
+                    "total_hurt",
+                    "total_hurt_to_hero",
+                    "total_be_hurt_by_hero",
+                    "passive_skill",
+                    "real_cmd",
+                    "is_in_grass",
+                    "take_hurt_infos"
+                  ],
+                  "fields": {
+                    "player_id": {
+                      "type": "int",
+                      "example": 31
+                    },
+                    "config_id": {
+                      "type": "int",
+                      "example": 133
+                    },
+                    "runtime_id": {
+                      "type": "int",
+                      "example": 7
+                    },
+                    "actor_type": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "sub_type": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "camp": {
+                      "type": "int",
+                      "example": 1
+                    },
+                    "behav_mode": {
+                      "type": "int",
+                      "example": 2
+                    },
+                    "location": {
+                      "type": "dict",
+                      "keys": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "fields": {
+                        "x": {
+                          "type": "int",
+                          "example": -21920
+                        },
+                        "y": {
+                          "type": "int",
+                          "example": 48
+                        },
+                        "z": {
+                          "type": "int",
+                          "example": -15192
+                        }
+                      }
+                    },
+                    "forward": {
+                      "type": "dict",
+                      "keys": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "fields": {
+                        "x": {
+                          "type": "int",
+                          "example": 819
+                        },
+                        "y": {
+                          "type": "int",
+                          "example": 0
+                        },
+                        "z": {
+                          "type": "int",
+                          "example": 573
+                        }
+                      }
+                    },
+                    "hp": {
+                      "type": "int",
+                      "example": 3242
+                    },
+                    "max_hp": {
+                      "type": "int",
+                      "example": 3242
+                    },
+                    "abilities": {
+                      "type": "list",
+                      "len": 46,
+                      "samples": [
+                        {
+                          "type": "bool",
+                          "example": false
+                        },
+                        {
+                          "type": "bool",
+                          "example": false
+                        },
+                        {
+                          "type": "bool",
+                          "example": false
+                        }
+                      ]
+                    },
+                    "attack_range": {
+                      "type": "int",
+                      "example": 8000
+                    },
+                    "attack_target": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "kill_income": {
+                      "type": "int",
+                      "example": 150
+                    },
+                    "hit_target_info": {
+                      "type": "list",
+                      "len": 0,
+                      "samples": []
+                    },
+                    "camp_visible": {
+                      "type": "list",
+                      "len": 2,
+                      "samples": [
+                        {
+                          "type": "bool",
+                          "example": true
+                        },
+                        {
+                          "type": "bool",
+                          "example": false
+                        }
+                      ]
+                    },
+                    "sight_area": {
+                      "type": "int",
+                      "example": 7000
+                    },
+                    "phy_atk": {
+                      "type": "int",
+                      "example": 198
+                    },
+                    "phy_def": {
+                      "type": "int",
+                      "example": 95
+                    },
+                    "mgc_atk": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mgc_def": {
+                      "type": "int",
+                      "example": 50
+                    },
+                    "mov_spd": {
+                      "type": "int",
+                      "example": 3816
+                    },
+                    "atk_spd": {
+                      "type": "int",
+                      "example": 600
+                    },
+                    "ep": {
+                      "type": "int",
+                      "example": 386
+                    },
+                    "max_ep": {
+                      "type": "int",
+                      "example": 440
+                    },
+                    "hp_recover": {
+                      "type": "int",
+                      "example": 40
+                    },
+                    "ep_recover": {
+                      "type": "int",
+                      "example": 15
+                    },
+                    "phy_armor_hurt": {
+                      "type": "int",
+                      "example": 64
+                    },
+                    "mgc_armor_hurt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "crit_rate": {
+                      "type": "int",
+                      "example": 1600
+                    },
+                    "crit_effe": {
+                      "type": "int",
+                      "example": 10000
+                    },
+                    "phy_vamp": {
+                      "type": "int",
+                      "example": 640
+                    },
+                    "mgc_vamp": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "cd_reduce": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ctrl_reduce": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "skill_state": {
+                      "type": "dict",
+                      "keys": [
+                        "slot_states"
+                      ],
+                      "fields": {
+                        "slot_states": {
+                          "type": "list",
+                          "len": 7,
+                          "samples": [
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "slot_type",
+                                "level",
+                                "usable",
+                                "cooldown",
+                                "cooldown_max",
+                                "usedTimes",
+                                "hitHeroTimes",
+                                "succUsedInFrame",
+                                "nextConfigID",
+                                "comboEffectTime"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "slot_type": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "level": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "usable": {
+                                  "type": "bool",
+                                  "truncated": true
+                                },
+                                "cooldown": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "cooldown_max": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "usedTimes": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "hitHeroTimes": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "succUsedInFrame": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "nextConfigID": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "comboEffectTime": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "slot_type",
+                                "level",
+                                "usable",
+                                "cooldown",
+                                "cooldown_max",
+                                "usedTimes",
+                                "hitHeroTimes",
+                                "succUsedInFrame",
+                                "nextConfigID",
+                                "comboEffectTime"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "slot_type": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "level": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "usable": {
+                                  "type": "bool",
+                                  "truncated": true
+                                },
+                                "cooldown": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "cooldown_max": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "usedTimes": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "hitHeroTimes": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "succUsedInFrame": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "nextConfigID": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "comboEffectTime": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "slot_type",
+                                "level",
+                                "usable",
+                                "cooldown",
+                                "cooldown_max",
+                                "usedTimes",
+                                "hitHeroTimes",
+                                "succUsedInFrame",
+                                "nextConfigID",
+                                "comboEffectTime"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "slot_type": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "level": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "usable": {
+                                  "type": "bool",
+                                  "truncated": true
+                                },
+                                "cooldown": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "cooldown_max": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "usedTimes": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "hitHeroTimes": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "succUsedInFrame": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "nextConfigID": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "comboEffectTime": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "equip_state": {
+                      "type": "dict",
+                      "keys": [
+                        "equips"
+                      ],
+                      "fields": {
+                        "equips": {
+                          "type": "list",
+                          "len": 6,
+                          "samples": [
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "buyPrice",
+                                "amount",
+                                "active_skill",
+                                "passive_skill"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "buyPrice": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "amount": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "active_skill": {
+                                  "type": "list",
+                                  "truncated": true
+                                },
+                                "passive_skill": {
+                                  "type": "list",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "buyPrice",
+                                "amount",
+                                "active_skill",
+                                "passive_skill"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "buyPrice": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "amount": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "active_skill": {
+                                  "type": "list",
+                                  "truncated": true
+                                },
+                                "passive_skill": {
+                                  "type": "list",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "buyPrice",
+                                "amount",
+                                "active_skill",
+                                "passive_skill"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "buyPrice": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "amount": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "active_skill": {
+                                  "type": "list",
+                                  "truncated": true
+                                },
+                                "passive_skill": {
+                                  "type": "list",
+                                  "truncated": true
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "buff_state": {
+                      "type": "dict",
+                      "keys": [
+                        "buff_skills",
+                        "buff_marks"
+                      ],
+                      "fields": {
+                        "buff_skills": {
+                          "type": "list",
+                          "len": 1,
+                          "samples": [
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "times",
+                                "startTime"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "times": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "startTime": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "buff_marks": {
+                          "type": "list",
+                          "len": 0,
+                          "samples": []
+                        }
+                      }
+                    },
+                    "level": {
+                      "type": "int",
+                      "example": 1
+                    },
+                    "exp": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "money": {
+                      "type": "int",
+                      "example": 50
+                    },
+                    "revive_time": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "kill_cnt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "dead_cnt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "assist_cnt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "money_cnt": {
+                      "type": "int",
+                      "example": 300
+                    },
+                    "total_hurt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "total_hurt_to_hero": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "total_be_hurt_by_hero": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "passive_skill": {
+                      "type": "list",
+                      "len": 1,
+                      "samples": [
+                        {
+                          "type": "dict",
+                          "keys": [
+                            "passive_skillid",
+                            "cooldown"
+                          ],
+                          "fields": {
+                            "passive_skillid": {
+                              "type": "int",
+                              "example": 13311
+                            },
+                            "cooldown": {
+                              "type": "int",
+                              "example": 0
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "real_cmd": {
+                      "type": "list",
+                      "len": 1,
+                      "samples": [
+                        {
+                          "type": "dict",
+                          "keys": [
+                            "command_type",
+                            "move_pos",
+                            "move_dir",
+                            "attack_common",
+                            "attack_topos",
+                            "attack_actor",
+                            "obj_skill",
+                            "dir_skill",
+                            "pos_skill",
+                            "learn_skill",
+                            "buy_equip",
+                            "sell_equip",
+                            "charge_skill"
+                          ],
+                          "fields": {
+                            "command_type": {
+                              "type": "int",
+                              "example": 2
+                            },
+                            "move_pos": {
+                              "type": "dict",
+                              "keys": [
+                                "destPos"
+                              ],
+                              "fields": {
+                                "destPos": {
+                                  "type": "dict",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            "move_dir": {
+                              "type": "dict",
+                              "keys": [
+                                "degree"
+                              ],
+                              "fields": {
+                                "degree": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            "attack_common": {
+                              "type": "dict",
+                              "keys": [
+                                "actorID",
+                                "start"
+                              ],
+                              "fields": {
+                                "actorID": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "start": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            "attack_topos": {
+                              "type": "dict",
+                              "keys": [
+                                "destPos"
+                              ],
+                              "fields": {
+                                "destPos": {
+                                  "type": "dict",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            "attack_actor": {
+                              "type": "dict",
+                              "keys": [
+                                "actorID"
+                              ],
+                              "fields": {
+                                "actorID": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            "obj_skill": {
+                              "type": "dict",
+                              "keys": [
+                                "skillID",
+                                "actorID",
+                                "slotType"
+                              ],
+                              "fields": {
+                                "skillID": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "actorID": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "slotType": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            "dir_skill": {
+                              "type": "dict",
+                              "keys": [
+                                "skillID",
+                                "actorID",
+                                "slotType",
+                                "degree"
+                              ],
+                              "fields": {
+                                "skillID": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "actorID": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "slotType": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "degree": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            "pos_skill": {
+                              "type": "dict",
+                              "keys": [
+                                "skillID",
+                                "destPos",
+                                "slotType"
+                              ],
+                              "fields": {
+                                "skillID": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "destPos": {
+                                  "type": "dict",
+                                  "truncated": true
+                                },
+                                "slotType": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            "learn_skill": {
+                              "type": "dict",
+                              "keys": [
+                                "slotType",
+                                "level"
+                              ],
+                              "fields": {
+                                "slotType": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "level": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            "buy_equip": {
+                              "type": "dict",
+                              "keys": [
+                                "equipId",
+                                "obj_id"
+                              ],
+                              "fields": {
+                                "equipId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "obj_id": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            "sell_equip": {
+                              "type": "dict",
+                              "keys": [
+                                "equipIndex"
+                              ],
+                              "fields": {
+                                "equipIndex": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            "charge_skill": {
+                              "type": "dict",
+                              "keys": [
+                                "slotType",
+                                "state",
+                                "degree"
+                              ],
+                              "fields": {
+                                "slotType": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "state": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "degree": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "is_in_grass": {
+                      "type": "bool",
+                      "example": false
+                    },
+                    "take_hurt_infos": {
+                      "type": "list",
+                      "len": 0,
+                      "samples": []
+                    }
+                  }
+                },
+                {
+                  "type": "dict",
+                  "keys": [
+                    "player_id",
+                    "config_id",
+                    "runtime_id",
+                    "actor_type",
+                    "sub_type",
+                    "camp",
+                    "behav_mode",
+                    "location",
+                    "forward",
+                    "hp",
+                    "max_hp",
+                    "abilities",
+                    "attack_range",
+                    "attack_target",
+                    "kill_income",
+                    "hit_target_info",
+                    "camp_visible",
+                    "sight_area",
+                    "phy_atk",
+                    "phy_def",
+                    "mgc_atk",
+                    "mgc_def",
+                    "mov_spd",
+                    "atk_spd",
+                    "ep",
+                    "max_ep",
+                    "hp_recover",
+                    "ep_recover",
+                    "phy_armor_hurt",
+                    "mgc_armor_hurt",
+                    "crit_rate",
+                    "crit_effe",
+                    "phy_vamp",
+                    "mgc_vamp",
+                    "cd_reduce",
+                    "ctrl_reduce",
+                    "skill_state",
+                    "equip_state",
+                    "buff_state",
+                    "level",
+                    "exp",
+                    "money",
+                    "revive_time",
+                    "kill_cnt",
+                    "dead_cnt",
+                    "assist_cnt",
+                    "money_cnt",
+                    "total_hurt",
+                    "total_hurt_to_hero",
+                    "total_be_hurt_by_hero",
+                    "passive_skill",
+                    "real_cmd",
+                    "is_in_grass",
+                    "take_hurt_infos"
+                  ],
+                  "fields": {
+                    "player_id": {
+                      "type": "int",
+                      "example": 32
+                    },
+                    "config_id": {
+                      "type": "int",
+                      "example": 112
+                    },
+                    "runtime_id": {
+                      "type": "int",
+                      "example": 14
+                    },
+                    "actor_type": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "sub_type": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "camp": {
+                      "type": "int",
+                      "example": 2
+                    },
+                    "behav_mode": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "location": {
+                      "type": "dict",
+                      "keys": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "fields": {
+                        "x": {
+                          "type": "int",
+                          "example": 100000
+                        },
+                        "y": {
+                          "type": "int",
+                          "example": 100000
+                        },
+                        "z": {
+                          "type": "int",
+                          "example": 100000
+                        }
+                      }
+                    },
+                    "forward": {
+                      "type": "dict",
+                      "keys": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "fields": {
+                        "x": {
+                          "type": "int",
+                          "example": 100000
+                        },
+                        "y": {
+                          "type": "int",
+                          "example": 100000
+                        },
+                        "z": {
+                          "type": "int",
+                          "example": 100000
+                        }
+                      }
+                    },
+                    "hp": {
+                      "type": "int",
+                      "example": 3431
+                    },
+                    "max_hp": {
+                      "type": "int",
+                      "example": 3431
+                    },
+                    "abilities": {
+                      "type": "list",
+                      "len": 0,
+                      "samples": []
+                    },
+                    "attack_range": {
+                      "type": "int",
+                      "example": 8000
+                    },
+                    "attack_target": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "kill_income": {
+                      "type": "int",
+                      "example": 150
+                    },
+                    "hit_target_info": {
+                      "type": "list",
+                      "len": 0,
+                      "samples": []
+                    },
+                    "camp_visible": {
+                      "type": "list",
+                      "len": 2,
+                      "samples": [
+                        {
+                          "type": "bool",
+                          "example": false
+                        },
+                        {
+                          "type": "bool",
+                          "example": true
+                        }
+                      ]
+                    },
+                    "sight_area": {
+                      "type": "int",
+                      "example": 7000
+                    },
+                    "phy_atk": {
+                      "type": "int",
+                      "example": 183
+                    },
+                    "phy_def": {
+                      "type": "int",
+                      "example": 178
+                    },
+                    "mgc_atk": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mgc_def": {
+                      "type": "int",
+                      "example": 50
+                    },
+                    "mov_spd": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "atk_spd": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ep": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "max_ep": {
+                      "type": "int",
+                      "example": 440
+                    },
+                    "hp_recover": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ep_recover": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "phy_armor_hurt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mgc_armor_hurt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "crit_rate": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "crit_effe": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "phy_vamp": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mgc_vamp": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "cd_reduce": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ctrl_reduce": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "skill_state": {
+                      "type": "dict",
+                      "keys": [
+                        "slot_states"
+                      ],
+                      "fields": {
+                        "slot_states": {
+                          "type": "list",
+                          "len": 7,
+                          "samples": [
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "slot_type",
+                                "level",
+                                "usable",
+                                "cooldown",
+                                "cooldown_max",
+                                "usedTimes",
+                                "hitHeroTimes",
+                                "succUsedInFrame",
+                                "nextConfigID",
+                                "comboEffectTime"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "slot_type": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "level": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "usable": {
+                                  "type": "bool",
+                                  "truncated": true
+                                },
+                                "cooldown": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "cooldown_max": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "usedTimes": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "hitHeroTimes": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "succUsedInFrame": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "nextConfigID": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "comboEffectTime": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "slot_type",
+                                "level",
+                                "usable",
+                                "cooldown",
+                                "cooldown_max",
+                                "usedTimes",
+                                "hitHeroTimes",
+                                "succUsedInFrame",
+                                "nextConfigID",
+                                "comboEffectTime"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "slot_type": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "level": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "usable": {
+                                  "type": "bool",
+                                  "truncated": true
+                                },
+                                "cooldown": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "cooldown_max": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "usedTimes": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "hitHeroTimes": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "succUsedInFrame": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "nextConfigID": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "comboEffectTime": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "slot_type",
+                                "level",
+                                "usable",
+                                "cooldown",
+                                "cooldown_max",
+                                "usedTimes",
+                                "hitHeroTimes",
+                                "succUsedInFrame",
+                                "nextConfigID",
+                                "comboEffectTime"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "slot_type": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "level": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "usable": {
+                                  "type": "bool",
+                                  "truncated": true
+                                },
+                                "cooldown": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "cooldown_max": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "usedTimes": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "hitHeroTimes": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "succUsedInFrame": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "nextConfigID": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "comboEffectTime": {
+                                  "type": "int",
+                                  "truncated": true
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "equip_state": {
+                      "type": "dict",
+                      "keys": [
+                        "equips"
+                      ],
+                      "fields": {
+                        "equips": {
+                          "type": "list",
+                          "len": 6,
+                          "samples": [
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "buyPrice",
+                                "amount",
+                                "active_skill",
+                                "passive_skill"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "buyPrice": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "amount": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "active_skill": {
+                                  "type": "list",
+                                  "truncated": true
+                                },
+                                "passive_skill": {
+                                  "type": "list",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "buyPrice",
+                                "amount",
+                                "active_skill",
+                                "passive_skill"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "buyPrice": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "amount": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "active_skill": {
+                                  "type": "list",
+                                  "truncated": true
+                                },
+                                "passive_skill": {
+                                  "type": "list",
+                                  "truncated": true
+                                }
+                              }
+                            },
+                            {
+                              "type": "dict",
+                              "keys": [
+                                "configId",
+                                "buyPrice",
+                                "amount",
+                                "active_skill",
+                                "passive_skill"
+                              ],
+                              "fields": {
+                                "configId": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "buyPrice": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "amount": {
+                                  "type": "int",
+                                  "truncated": true
+                                },
+                                "active_skill": {
+                                  "type": "list",
+                                  "truncated": true
+                                },
+                                "passive_skill": {
+                                  "type": "list",
+                                  "truncated": true
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "buff_state": {
+                      "type": "dict",
+                      "keys": [
+                        "buff_skills",
+                        "buff_marks"
+                      ],
+                      "fields": {
+                        "buff_skills": {
+                          "type": "list",
+                          "len": 0,
+                          "samples": []
+                        },
+                        "buff_marks": {
+                          "type": "list",
+                          "len": 0,
+                          "samples": []
+                        }
+                      }
+                    },
+                    "level": {
+                      "type": "int",
+                      "example": 1
+                    },
+                    "exp": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "money": {
+                      "type": "int",
+                      "example": 80
+                    },
+                    "revive_time": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "kill_cnt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "dead_cnt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "assist_cnt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "money_cnt": {
+                      "type": "int",
+                      "example": 300
+                    },
+                    "total_hurt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "total_hurt_to_hero": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "total_be_hurt_by_hero": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "passive_skill": {
+                      "type": "list",
+                      "len": 2,
+                      "samples": [
+                        {
+                          "type": "dict",
+                          "keys": [
+                            "passive_skillid",
+                            "cooldown"
+                          ],
+                          "fields": {
+                            "passive_skillid": {
+                              "type": "int",
+                              "example": 11290
+                            },
+                            "cooldown": {
+                              "type": "int",
+                              "example": 0
+                            }
+                          }
+                        },
+                        {
+                          "type": "dict",
+                          "keys": [
+                            "passive_skillid",
+                            "cooldown"
+                          ],
+                          "fields": {
+                            "passive_skillid": {
+                              "type": "int",
+                              "example": 11200
+                            },
+                            "cooldown": {
+                              "type": "int",
+                              "example": 0
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "real_cmd": {
+                      "type": "list",
+                      "len": 0,
+                      "samples": []
+                    },
+                    "is_in_grass": {
+                      "type": "bool",
+                      "example": false
+                    },
+                    "take_hurt_infos": {
+                      "type": "list",
+                      "len": 0,
+                      "samples": []
+                    }
+                  }
+                }
+              ]
+            },
+            "npc_states": {
+              "type": "list",
+              "len": 8,
+              "samples": [
+                {
+                  "type": "dict",
+                  "keys": [
+                    "config_id",
+                    "runtime_id",
+                    "actor_type",
+                    "sub_type",
+                    "camp",
+                    "behav_mode",
+                    "location",
+                    "forward",
+                    "hp",
+                    "max_hp",
+                    "abilities",
+                    "attack_range",
+                    "attack_target",
+                    "kill_income",
+                    "hit_target_info",
+                    "camp_visible",
+                    "sight_area",
+                    "phy_atk",
+                    "phy_def",
+                    "mgc_atk",
+                    "mgc_def",
+                    "mov_spd",
+                    "atk_spd",
+                    "ep",
+                    "max_ep",
+                    "hp_recover",
+                    "ep_recover",
+                    "phy_armor_hurt",
+                    "mgc_armor_hurt",
+                    "crit_rate",
+                    "crit_effe",
+                    "phy_vamp",
+                    "mgc_vamp",
+                    "cd_reduce",
+                    "ctrl_reduce",
+                    "buff_state",
+                    "hurt_hero_info"
+                  ],
+                  "fields": {
+                    "config_id": {
+                      "type": "int",
+                      "example": 6801
+                    },
+                    "runtime_id": {
+                      "type": "int",
+                      "example": 44
+                    },
+                    "actor_type": {
+                      "type": "int",
+                      "example": 1
+                    },
+                    "sub_type": {
+                      "type": "int",
+                      "example": 11
+                    },
+                    "camp": {
+                      "type": "int",
+                      "example": 1
+                    },
+                    "behav_mode": {
+                      "type": "int",
+                      "example": 6
+                    },
+                    "location": {
+                      "type": "dict",
+                      "keys": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "fields": {
+                        "x": {
+                          "type": "int",
+                          "example": -25758
+                        },
+                        "y": {
+                          "type": "int",
+                          "example": 48
+                        },
+                        "z": {
+                          "type": "int",
+                          "example": -27667
+                        }
+                      }
+                    },
+                    "forward": {
+                      "type": "dict",
+                      "keys": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "fields": {
+                        "x": {
+                          "type": "int",
+                          "example": -707
+                        },
+                        "y": {
+                          "type": "int",
+                          "example": 0
+                        },
+                        "z": {
+                          "type": "int",
+                          "example": 707
+                        }
+                      }
+                    },
+                    "hp": {
+                      "type": "int",
+                      "example": 1356
+                    },
+                    "max_hp": {
+                      "type": "int",
+                      "example": 1356
+                    },
+                    "abilities": {
+                      "type": "list",
+                      "len": 46,
+                      "samples": [
+                        {
+                          "type": "bool",
+                          "example": false
+                        },
+                        {
+                          "type": "bool",
+                          "example": false
+                        },
+                        {
+                          "type": "bool",
+                          "example": false
+                        }
+                      ]
+                    },
+                    "attack_range": {
+                      "type": "int",
+                      "example": 7000
+                    },
+                    "attack_target": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "kill_income": {
+                      "type": "int",
+                      "example": 46
+                    },
+                    "hit_target_info": {
+                      "type": "list",
+                      "len": 0,
+                      "samples": []
+                    },
+                    "camp_visible": {
+                      "type": "list",
+                      "len": 2,
+                      "samples": [
+                        {
+                          "type": "bool",
+                          "example": true
+                        },
+                        {
+                          "type": "bool",
+                          "example": false
+                        }
+                      ]
+                    },
+                    "sight_area": {
+                      "type": "int",
+                      "example": 8500
+                    },
+                    "phy_atk": {
+                      "type": "int",
+                      "example": 90
+                    },
+                    "phy_def": {
+                      "type": "int",
+                      "example": 180
+                    },
+                    "mgc_atk": {
+                      "type": "int",
+                      "example": 90
+                    },
+                    "mgc_def": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mov_spd": {
+                      "type": "int",
+                      "example": 3088
+                    },
+                    "atk_spd": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ep": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "max_ep": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "hp_recover": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ep_recover": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "phy_armor_hurt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mgc_armor_hurt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "crit_rate": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "crit_effe": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "phy_vamp": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mgc_vamp": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "cd_reduce": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ctrl_reduce": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "buff_state": {
+                      "type": "dict",
+                      "keys": [
+                        "buff_skills",
+                        "buff_marks"
+                      ],
+                      "fields": {
+                        "buff_skills": {
+                          "type": "list",
+                          "len": 0,
+                          "samples": []
+                        },
+                        "buff_marks": {
+                          "type": "list",
+                          "len": 0,
+                          "samples": []
+                        }
+                      }
+                    },
+                    "hurt_hero_info": {
+                      "type": "list",
+                      "len": 0,
+                      "samples": []
+                    }
+                  }
+                },
+                {
+                  "type": "dict",
+                  "keys": [
+                    "config_id",
+                    "runtime_id",
+                    "actor_type",
+                    "sub_type",
+                    "camp",
+                    "behav_mode",
+                    "location",
+                    "forward",
+                    "hp",
+                    "max_hp",
+                    "abilities",
+                    "attack_range",
+                    "attack_target",
+                    "kill_income",
+                    "hit_target_info",
+                    "camp_visible",
+                    "sight_area",
+                    "phy_atk",
+                    "phy_def",
+                    "mgc_atk",
+                    "mgc_def",
+                    "mov_spd",
+                    "atk_spd",
+                    "ep",
+                    "max_ep",
+                    "hp_recover",
+                    "ep_recover",
+                    "phy_armor_hurt",
+                    "mgc_armor_hurt",
+                    "crit_rate",
+                    "crit_effe",
+                    "phy_vamp",
+                    "mgc_vamp",
+                    "cd_reduce",
+                    "ctrl_reduce",
+                    "buff_state",
+                    "hurt_hero_info"
+                  ],
+                  "fields": {
+                    "config_id": {
+                      "type": "int",
+                      "example": 6800
+                    },
+                    "runtime_id": {
+                      "type": "int",
+                      "example": 42
+                    },
+                    "actor_type": {
+                      "type": "int",
+                      "example": 1
+                    },
+                    "sub_type": {
+                      "type": "int",
+                      "example": 11
+                    },
+                    "camp": {
+                      "type": "int",
+                      "example": 1
+                    },
+                    "behav_mode": {
+                      "type": "int",
+                      "example": 6
+                    },
+                    "location": {
+                      "type": "dict",
+                      "keys": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "fields": {
+                        "x": {
+                          "type": "int",
+                          "example": -23566
+                        },
+                        "y": {
+                          "type": "int",
+                          "example": 48
+                        },
+                        "z": {
+                          "type": "int",
+                          "example": -25782
+                        }
+                      }
+                    },
+                    "forward": {
+                      "type": "dict",
+                      "keys": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "fields": {
+                        "x": {
+                          "type": "int",
+                          "example": 760
+                        },
+                        "y": {
+                          "type": "int",
+                          "example": 0
+                        },
+                        "z": {
+                          "type": "int",
+                          "example": 650
+                        }
+                      }
+                    },
+                    "hp": {
+                      "type": "int",
+                      "example": 1488
+                    },
+                    "max_hp": {
+                      "type": "int",
+                      "example": 1488
+                    },
+                    "abilities": {
+                      "type": "list",
+                      "len": 46,
+                      "samples": [
+                        {
+                          "type": "bool",
+                          "example": false
+                        },
+                        {
+                          "type": "bool",
+                          "example": false
+                        },
+                        {
+                          "type": "bool",
+                          "example": false
+                        }
+                      ]
+                    },
+                    "attack_range": {
+                      "type": "int",
+                      "example": 1500
+                    },
+                    "attack_target": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "kill_income": {
+                      "type": "int",
+                      "example": 75
+                    },
+                    "hit_target_info": {
+                      "type": "list",
+                      "len": 0,
+                      "samples": []
+                    },
+                    "camp_visible": {
+                      "type": "list",
+                      "len": 2,
+                      "samples": [
+                        {
+                          "type": "bool",
+                          "example": true
+                        },
+                        {
+                          "type": "bool",
+                          "example": false
+                        }
+                      ]
+                    },
+                    "sight_area": {
+                      "type": "int",
+                      "example": 5500
+                    },
+                    "phy_atk": {
+                      "type": "int",
+                      "example": 60
+                    },
+                    "phy_def": {
+                      "type": "int",
+                      "example": 180
+                    },
+                    "mgc_atk": {
+                      "type": "int",
+                      "example": 60
+                    },
+                    "mgc_def": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mov_spd": {
+                      "type": "int",
+                      "example": 3088
+                    },
+                    "atk_spd": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ep": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "max_ep": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "hp_recover": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ep_recover": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "phy_armor_hurt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mgc_armor_hurt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "crit_rate": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "crit_effe": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "phy_vamp": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mgc_vamp": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "cd_reduce": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ctrl_reduce": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "buff_state": {
+                      "type": "dict",
+                      "keys": [
+                        "buff_skills",
+                        "buff_marks"
+                      ],
+                      "fields": {
+                        "buff_skills": {
+                          "type": "list",
+                          "len": 0,
+                          "samples": []
+                        },
+                        "buff_marks": {
+                          "type": "list",
+                          "len": 0,
+                          "samples": []
+                        }
+                      }
+                    },
+                    "hurt_hero_info": {
+                      "type": "list",
+                      "len": 0,
+                      "samples": []
+                    }
+                  }
+                },
+                {
+                  "type": "dict",
+                  "keys": [
+                    "config_id",
+                    "runtime_id",
+                    "actor_type",
+                    "sub_type",
+                    "camp",
+                    "behav_mode",
+                    "location",
+                    "forward",
+                    "hp",
+                    "max_hp",
+                    "abilities",
+                    "attack_range",
+                    "attack_target",
+                    "kill_income",
+                    "hit_target_info",
+                    "camp_visible",
+                    "sight_area",
+                    "phy_atk",
+                    "phy_def",
+                    "mgc_atk",
+                    "mgc_def",
+                    "mov_spd",
+                    "atk_spd",
+                    "ep",
+                    "max_ep",
+                    "hp_recover",
+                    "ep_recover",
+                    "phy_armor_hurt",
+                    "mgc_armor_hurt",
+                    "crit_rate",
+                    "crit_effe",
+                    "phy_vamp",
+                    "mgc_vamp",
+                    "cd_reduce",
+                    "ctrl_reduce",
+                    "buff_state",
+                    "hurt_hero_info"
+                  ],
+                  "fields": {
+                    "config_id": {
+                      "type": "int",
+                      "example": 46
+                    },
+                    "runtime_id": {
+                      "type": "int",
+                      "example": 16
+                    },
+                    "actor_type": {
+                      "type": "int",
+                      "example": 2
+                    },
+                    "sub_type": {
+                      "type": "int",
+                      "example": 23
+                    },
+                    "camp": {
+                      "type": "int",
+                      "example": 2
+                    },
+                    "behav_mode": {
+                      "type": "int",
+                      "example": 5
+                    },
+                    "location": {
+                      "type": "dict",
+                      "keys": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "fields": {
+                        "x": {
+                          "type": "int",
+                          "example": 45785
+                        },
+                        "y": {
+                          "type": "int",
+                          "example": 1120
+                        },
+                        "z": {
+                          "type": "int",
+                          "example": 45856
+                        }
+                      }
+                    },
+                    "forward": {
+                      "type": "dict",
+                      "keys": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "fields": {
+                        "x": {
+                          "type": "int",
+                          "example": 0
+                        },
+                        "y": {
+                          "type": "int",
+                          "example": 0
+                        },
+                        "z": {
+                          "type": "int",
+                          "example": -1000
+                        }
+                      }
+                    },
+                    "hp": {
+                      "type": "int",
+                      "example": 6000
+                    },
+                    "max_hp": {
+                      "type": "int",
+                      "example": 6000
+                    },
+                    "abilities": {
+                      "type": "list",
+                      "len": 46,
+                      "samples": [
+                        {
+                          "type": "bool",
+                          "example": false
+                        },
+                        {
+                          "type": "bool",
+                          "example": true
+                        },
+                        {
+                          "type": "bool",
+                          "example": false
+                        }
+                      ]
+                    },
+                    "attack_range": {
+                      "type": "int",
+                      "example": 13000
+                    },
+                    "attack_target": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "kill_income": {
+                      "type": "int",
+                      "example": 150
+                    },
+                    "hit_target_info": {
+                      "type": "list",
+                      "len": 0,
+                      "samples": []
+                    },
+                    "camp_visible": {
+                      "type": "list",
+                      "len": 2,
+                      "samples": [
+                        {
+                          "type": "bool",
+                          "example": true
+                        },
+                        {
+                          "type": "bool",
+                          "example": true
+                        }
+                      ]
+                    },
+                    "sight_area": {
+                      "type": "int",
+                      "example": 8000
+                    },
+                    "phy_atk": {
+                      "type": "int",
+                      "example": 9999
+                    },
+                    "phy_def": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mgc_atk": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mgc_def": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mov_spd": {
+                      "type": "int",
+                      "example": 5000
+                    },
+                    "atk_spd": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ep": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "max_ep": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "hp_recover": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ep_recover": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "phy_armor_hurt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mgc_armor_hurt": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "crit_rate": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "crit_effe": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "phy_vamp": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "mgc_vamp": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "cd_reduce": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "ctrl_reduce": {
+                      "type": "int",
+                      "example": 0
+                    },
+                    "buff_state": {
+                      "type": "dict",
+                      "keys": [
+                        "buff_skills",
+                        "buff_marks"
+                      ],
+                      "fields": {
+                        "buff_skills": {
+                          "type": "list",
+                          "len": 0,
+                          "samples": []
+                        },
+                        "buff_marks": {
+                          "type": "list",
+                          "len": 0,
+                          "samples": []
+                        }
+                      }
+                    },
+                    "hurt_hero_info": {
+                      "type": "list",
+                      "len": 0,
+                      "samples": []
+                    }
+                  }
+                }
+              ]
+            },
+            "bullets": {
+              "type": "list",
+              "len": 0,
+              "samples": []
+            },
+            "cakes": {
+              "type": "list",
+              "len": 0,
+              "samples": []
+            },
+            "frame_action": {
+              "type": "dict",
+              "keys": [
+                "dead_action"
+              ],
+              "fields": {
+                "dead_action": {
+                  "type": "list",
+                  "len": 0,
+                  "samples": []
+                }
+              }
+            },
+            "map_state": {
+              "type": "bool",
+              "example": true
+            }
+          }
+        },
+        "reward": {
+          "type": "dict",
+          "keys": [
+            "hp_point",
+            "hp_point_origin",
+            "hp_point_weight",
+            "tower_hp_point",
+            "tower_hp_point_origin",
+            "tower_hp_point_weight",
+            "money",
+            "money_origin",
+            "money_weight",
+            "exp",
+            "exp_origin",
+            "exp_weight",
+            "ep_rate",
+            "ep_rate_origin",
+            "ep_rate_weight",
+            "death",
+            "death_origin",
+            "death_weight",
+            "kill",
+            "kill_origin",
+            "kill_weight",
+            "last_hit",
+            "last_hit_origin",
+            "last_hit_weight",
+            "forward",
+            "forward_origin",
+            "forward_weight",
+            "reward_sum"
+          ],
+          "fields": {
+            "hp_point": {
+              "type": "float",
+              "example": 0.0
+            },
+            "hp_point_origin": {
+              "type": "float",
+              "example": 0.0
+            },
+            "hp_point_weight": {
+              "type": "float",
+              "example": 0.0
+            },
+            "tower_hp_point": {
+              "type": "float",
+              "example": 0.0
+            },
+            "tower_hp_point_origin": {
+              "type": "float",
+              "example": 0.0
+            },
+            "tower_hp_point_weight": {
+              "type": "float",
+              "example": 0.0
+            },
+            "money": {
+              "type": "float",
+              "example": 0.0
+            },
+            "money_origin": {
+              "type": "float",
+              "example": 0.0
+            },
+            "money_weight": {
+              "type": "float",
+              "example": 0.0
+            },
+            "exp": {
+              "type": "float",
+              "example": 0.0
+            },
+            "exp_origin": {
+              "type": "float",
+              "example": 0.0
+            },
+            "exp_weight": {
+              "type": "float",
+              "example": 0.0
+            },
+            "ep_rate": {
+              "type": "float",
+              "example": 0.0
+            },
+            "ep_rate_origin": {
+              "type": "float",
+              "example": 0.0
+            },
+            "ep_rate_weight": {
+              "type": "float",
+              "example": 0.0
+            },
+            "death": {
+              "type": "float",
+              "example": 0.0
+            },
+            "death_origin": {
+              "type": "float",
+              "example": 0.0
+            },
+            "death_weight": {
+              "type": "float",
+              "example": -0.0
+            },
+            "kill": {
+              "type": "float",
+              "example": 0.0
+            },
+            "kill_origin": {
+              "type": "float",
+              "example": 0.0
+            },
+            "kill_weight": {
+              "type": "float",
+              "example": -0.0
+            },
+            "last_hit": {
+              "type": "float",
+              "example": 0.0
+            },
+            "last_hit_origin": {
+              "type": "float",
+              "example": 0.0
+            },
+            "last_hit_weight": {
+              "type": "float",
+              "example": 0.0
+            },
+            "forward": {
+              "type": "float",
+              "example": 0.0
+            },
+            "forward_origin": {
+              "type": "float",
+              "example": 0.0
+            },
+            "forward_weight": {
+              "type": "float",
+              "example": 0.0
+            },
+            "reward_sum": {
+              "type": "float",
+              "example": 0.0
+            }
+          }
+        }
+      }
+    }
+  }
+}

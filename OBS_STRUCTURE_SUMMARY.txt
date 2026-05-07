@@ -1,0 +1,269 @@
+HOK 1v1 Observation 数据结构简要说明
+
+数据来源
+- schema/episode_0001_agent_0_frame_000000.json
+- schema/episode_0001_agent_0_frame_000500.json
+- raw/episode_0001_agent_0_frame_000000.json
+- raw/episode_0001_agent_0_frame_000500.json
+
+一、顶层结构
+
+每个 dump 文件的顶层字段：
+- episode
+- frame_no：dump 时记录的帧号
+- agent_index：当前 agent 下标
+- usr_conf：本局配置
+- extra_info：环境返回信息
+- env_meta：lineup / is_eval / monitor_side / terminated / truncated
+- observation：真正用于建 feature 的环境观测
+
+核心路径：
+observation
+
+observation 下的字段：
+- player_id：当前 agent 控制的英雄 runtime_id，本样例为 7
+- camp：当前 agent 阵营，本样例为 1
+- feature：平台没有直接给现成 feature，本样例长度为 0
+- legal_action：动作合法性 mask，长度 184
+- sub_action_mask：分动作 mask，key 为 0..11，每个长度 6
+- score：长度 1
+- frame_state：真实环境状态，后续 feature 主要从这里构建
+- reward：当前 reward manager 写入的调试奖励，不建议作为模型输入
+
+重要结论：
+observation.feature 为空，所以 observation input 必须自己从 frame_state 构造。
+
+二、frame_state 结构
+
+路径：
+observation.frame_state
+
+字段：
+- frame_no：环境内部帧号
+- hero_states：英雄列表，长度 2
+- npc_states：NPC 列表，包含塔、小兵等，长度会变化
+- bullets：当前样例为空
+- cakes：当前样例为空
+- frame_action：动作记录，含 dead_action
+- map_state：bool
+
+注意：
+dump 的外层 frame_no 和 frame_state.frame_no 可能不同。
+本样例中外层 frame_no=0 时，frame_state.frame_no=56。
+如果做时间特征，建议优先使用 frame_state.frame_no。
+
+三、本样例英雄对应关系
+
+agent0：
+- observation.player_id = 7
+- observation.camp = 1
+- 我方英雄：config_id=133，runtime_id=7，camp=1，即狄仁杰
+- 敌方英雄：config_id=112，runtime_id=14，camp=2，即鲁班七号
+
+frame 0 我方：
+- hp/max_hp = 3242/3242
+- ep/max_ep = 440/440
+- level = 1
+- money = 300
+- location = (-40326, 48, -40171)
+
+frame 500 我方：
+- hp/max_hp = 3242/3242
+- ep/max_ep = 386/440
+- level = 1
+- money = 50
+- money_cnt = 300
+- location = (-21920, 48, -15192)
+
+四、hero_states 关键字段
+
+路径：
+observation.frame_state.hero_states[i]
+
+推荐用于 feature 的字段：
+- config_id：英雄 id
+- runtime_id：运行时 actor id，可用于匹配 player_id
+- camp：阵营
+- location.x / location.z：位置
+- forward.x / forward.z：朝向
+- hp / max_hp：血量比例
+- ep / max_ep：蓝量或能量比例
+- level：等级
+- money / money_cnt：经济
+- kill_cnt / dead_cnt / assist_cnt：击杀死亡助攻
+- total_hurt_to_hero：对英雄伤害
+- total_be_hurt_by_hero：受到英雄伤害
+- attack_range：攻击范围
+- attack_target：当前攻击目标 runtime_id
+- skill_state.slot_states：技能等级、可用性、CD
+- buff_state：buff 信息
+- is_in_grass：是否在草丛
+
+技能字段路径：
+observation.frame_state.hero_states[i].skill_state.slot_states[j]
+
+技能字段：
+- slot_type
+- configId
+- level
+- usable
+- cooldown
+- cooldown_max
+- usedTimes
+- hitHeroTimes
+- succUsedInFrame
+
+建议特征：
+- 对每个主要技能取 usable
+- cooldown / cooldown_max
+- level
+
+五、不可见目标的坑
+
+敌方英雄在 frame 0 和 frame 500 中位置为：
+- x = 100000
+- y = 100000
+- z = 100000
+
+这基本是不可见或未知位置的占位值，不能直接当真实坐标输入。
+
+处理建议：
+- 先判断敌方是否可见
+- 若不可见，位置特征置 0 或使用上一次可见位置
+- 同时加入 enemy_visible 特征
+
+可见性相关字段：
+- hero_states[i].camp_visible
+- npc_states[i].camp_visible
+
+六、npc_states 结构
+
+路径：
+observation.frame_state.npc_states[i]
+
+字段和 hero 类似，常用字段：
+- config_id
+- runtime_id
+- actor_type
+- sub_type
+- camp
+- behav_mode
+- location.x / location.z
+- hp / max_hp
+- attack_range
+- attack_target
+- kill_income
+- camp_visible
+- hurt_hero_info
+
+本样例观察到：
+- actor_type=1, sub_type=11：疑似小兵
+- actor_type=2, sub_type=21/23/24：疑似防御塔或基地建筑
+
+frame 0：
+- npc_states 长度 6
+
+frame 500：
+- npc_states 长度 8
+- 新增了我方小兵，actor_type=1, sub_type=11
+
+建议后续 feature 先聚合 NPC，而不是全量展开：
+- 最近我方小兵数量
+- 最近敌方小兵数量
+- 最近低血量敌方小兵 hp_ratio
+- 我方塔 hp_ratio
+- 敌方塔 hp_ratio
+- 与最近兵线/塔的相对距离
+
+七、reward 结构
+
+路径：
+observation.reward
+
+字段：
+- hp_point
+- tower_hp_point
+- money
+- exp
+- ep_rate
+- death
+- kill
+- last_hit
+- forward
+- reward_sum
+
+每项通常有：
+- xxx
+- xxx_origin
+- xxx_weight
+
+用途：
+- 适合 debug 奖励是否生效
+- 不建议作为模型 observation input
+
+八、动作 mask 结构
+
+路径：
+observation.legal_action
+observation.sub_action_mask
+
+观察到：
+- legal_action 长度 184
+- sub_action_mask key 为 0..11
+- 每个 sub_action_mask 子项长度 6
+
+意义：
+模型输出和 PPO 采样必须和这个动作结构对齐。
+fallback action 也必须使用 legal_action 判断合法性。
+
+九、第一版 observation feature 建议
+
+先做简单、稳定、容易 debug 的 feature，不要一开始堆太多。
+
+建议包含：
+
+自身英雄：
+- hp_ratio
+- ep_ratio
+- level
+- money 或 money_cnt
+- kill_cnt
+- dead_cnt
+- location.x / location.z 归一化
+- forward.x / forward.z 归一化
+- skill usable / cooldown ratio
+
+敌方英雄：
+- enemy_visible
+- hp_ratio
+- level
+- relative_x / relative_z，仅可见时使用
+- distance，仅可见时使用
+
+防御塔：
+- self_tower_hp_ratio
+- enemy_tower_hp_ratio
+- distance_to_self_tower
+- distance_to_enemy_tower
+
+兵线：
+- nearest_self_minion_distance
+- nearest_enemy_minion_distance
+- low_hp_enemy_minion_exists
+- enemy_minion_count_nearby
+- self_minion_count_nearby
+
+全局：
+- frame_state.frame_no 归一化
+- distance_to_lane_center
+- 是否处于危险区，例如离敌塔过近
+
+十、下一步建议
+
+1. 先基于 raw JSON 完成一个固定长度 feature builder。
+2. 所有坐标先除以一个固定地图尺度，例如 100000，裁剪到 [-1, 1]。
+3. 对 hp/ep/cooldown 都使用比例。
+4. 对不可见敌方坐标不要直接使用 100000。
+5. 第一版 feature 控制在 80-150 维内，便于 debug。
+6. 等 feature 稳定后，再接 LSTM 和更复杂 reward。
+
