@@ -21,10 +21,12 @@ class GameConfig:
         "forward": 0.02,
         "danger": -0.2,
         "idle": -0.02,
+        "tower_attack": 0.25,
+        "safe_push": 0.04,
     }
     REMOVE_FORWARD_AFTER = 1200
     TIME_SCALE_ARG = 8000
-    REWARD_WITHOUT_TIME_SCALE = {"death", "kill", "danger", "idle"}
+    REWARD_WITHOUT_TIME_SCALE = {"death", "kill", "danger", "idle", "tower_attack", "safe_push"}
     MODEL_SAVE_INTERVAL = 1800
     CAMP_HEROES = [112, 133]
 
