@@ -54,25 +54,29 @@ def runtime_id(actor):
     return get_any(actor or {}, "runtime_id", "player_id", default=0)
 
 
-def actor_pos(actor):
+def actor_pos(actor, mirror=False):
     loc = actor.get("location", {}) if isinstance(actor, dict) else {}
     if isinstance(loc, dict):
-        return [float(loc.get("x", 0) or 0), float(loc.get("z", 0) or 0)]
+        x, z = float(loc.get("x", 0) or 0), float(loc.get("z", 0) or 0)
     if isinstance(loc, (list, tuple)) and len(loc) >= 3:
-        return [float(loc[0] or 0), float(loc[2] or 0)]
-    return [0.0, 0.0]
+        x, z = float(loc[0] or 0), float(loc[2] or 0)
+    elif not isinstance(loc, dict):
+        x, z = 0.0, 0.0
+    if mirror and abs(x) < UNSEEN_PADDING and abs(z) < UNSEEN_PADDING:
+        x, z = -x, -z
+    return [x, z]
 
 
-def norm_pos(actor):
-    x, z = actor_pos(actor)
+def norm_pos(actor, mirror=False):
+    x, z = actor_pos(actor, mirror)
     if abs(x) >= UNSEEN_PADDING or abs(z) >= UNSEEN_PADDING:
         return [0.0, 0.0]
     return [clip(x / MAP_SCALE), clip(z / MAP_SCALE)]
 
 
-def rel_pos(src, dst):
-    sx, sz = actor_pos(src)
-    dx, dz = actor_pos(dst)
+def rel_pos(src, dst, mirror=False):
+    sx, sz = actor_pos(src, mirror)
+    dx, dz = actor_pos(dst, mirror)
     if abs(dx) >= UNSEEN_PADDING or abs(dz) >= UNSEEN_PADDING:
         return [0.0, 0.0, 0.0]
     rx, rz = dx - sx, dz - sz
@@ -117,6 +121,7 @@ class Top1FeatureBuilder:
 
     def __init__(self, logger=None):
         self.logger = logger
+        self.mirror = False
 
     def reset(self):
         pass
@@ -124,6 +129,7 @@ class Top1FeatureBuilder:
     def build_observation(self, observation):
         frame_state = observation.get("frame_state", {})
         main_camp = camp_id(observation.get("camp", observation.get("player_camp", 1)))
+        self.mirror = main_camp == 2
         player_id = observation.get("player_id", 0)
 
         heroes = frame_state.get("hero_states", []) or []
@@ -138,7 +144,7 @@ class Top1FeatureBuilder:
         feature += self._skill_features(our_hero)
         feature += self._tower_features(our_hero, our_tower, enemy_tower)
         feature += self._soldier_features(our_hero, our_soldiers, enemy_soldiers, main_camp)
-        feature += self._global_features(frame_state, our_hero, enemy_hero, our_tower, enemy_tower)
+        feature += self._global_features(frame_state, our_hero, enemy_hero, our_tower, enemy_tower, our_soldiers)
         feature += self._legal_features(observation)
 
         if len(feature) < self.FEATURE_DIM:
@@ -178,13 +184,13 @@ class Top1FeatureBuilder:
         if not hero:
             return [0.0] * 24
         visible = always_visible or is_visible_to(hero, main_camp)
-        x, z = norm_pos(hero) if visible else [0.0, 0.0]
+        x, z = norm_pos(hero, self.mirror) if visible else [0.0, 0.0]
         forward = hero.get("forward", {}) or {}
         fx = clip(float(forward.get("x", 0) or 0) / 1000.0)
         fz = clip(float(forward.get("z", 0) or 0) / 1000.0)
         tower_danger = self._in_tower_range(hero, enemy_tower) if enemy_tower else 0.0
         attacked_by_tower = float(enemy_tower is not None and runtime_id(hero) == get_any(enemy_tower, "attack_target", default=-1))
-        rel = [0.0, 0.0, 0.0] if our_hero is hero else rel_pos(our_hero, hero)
+        rel = [0.0, 0.0, 0.0] if our_hero is hero else rel_pos(our_hero, hero, self.mirror)
         return [
             float(visible),
             hp_ratio(hero),
@@ -217,8 +223,8 @@ class Top1FeatureBuilder:
         if not enemy_hero:
             return [0.0] * 18
         visible = is_visible_to(enemy_hero, main_camp)
-        rel = rel_pos(our_hero, enemy_hero) if our_hero and visible else [0.0, 0.0, 0.0]
-        pos = norm_pos(enemy_hero) if visible else [0.0, 0.0]
+        rel = rel_pos(our_hero, enemy_hero, self.mirror) if our_hero and visible else [0.0, 0.0, 0.0]
+        pos = norm_pos(enemy_hero, self.mirror) if visible else [0.0, 0.0]
         in_attack_range = 0.0
         if our_hero and visible:
             in_attack_range = float(distance(our_hero, enemy_hero) <= float(get_any(our_hero, "attack_range", default=0) or 0))
@@ -263,7 +269,7 @@ class Top1FeatureBuilder:
         out = []
         for tower in [our_tower, enemy_tower]:
             if tower and our_hero:
-                rel = rel_pos(our_hero, tower)
+                rel = rel_pos(our_hero, tower, self.mirror)
                 out += [
                     hp_ratio(tower),
                     rel[0],
@@ -287,7 +293,7 @@ class Top1FeatureBuilder:
             nearby = [s for s in visible if distance(our_hero, s) <= NEARBY_RANGE]
             nearest = min(visible, key=lambda s: distance(our_hero, s), default=None)
             low_hp = [s for s in visible if hp_ratio(s) <= 0.35]
-            rel = rel_pos(our_hero, nearest) if nearest else [0.0, 0.0, 0.0]
+            rel = rel_pos(our_hero, nearest, self.mirror) if nearest else [0.0, 0.0, 0.0]
             return [
                 ratio(len(visible), 8),
                 ratio(len(nearby), 8),
@@ -305,10 +311,11 @@ class Top1FeatureBuilder:
 
         return pack_group(our_soldiers) + pack_group(enemy_soldiers)
 
-    def _global_features(self, frame_state, our_hero, enemy_hero, our_tower, enemy_tower):
-        hero_x, hero_z = norm_pos(our_hero or {})
+    def _global_features(self, frame_state, our_hero, enemy_hero, our_tower, enemy_tower, our_soldiers):
+        hero_x, hero_z = norm_pos(our_hero or {}, self.mirror)
         center_dist = clip(math.hypot(hero_x, hero_z), 0.0, 1.0)
         enemy_visible = float(enemy_hero is not None and is_visible_to(enemy_hero, camp_id((our_hero or {}).get("camp", 1))))
+        safe_push, tower_tanking_minion, enemy_threat = self._safe_push_state(our_hero, enemy_hero, enemy_tower, our_soldiers)
         return [
             ratio(get_any(frame_state, "frame_no", default=0), 20000),
             hero_x,
@@ -319,7 +326,9 @@ class Top1FeatureBuilder:
             hp_ratio(enemy_tower),
             float(bool(frame_state.get("map_state", True))),
             float(our_hero is not None and hp_ratio(our_hero) <= 0.35),
-            float(our_hero is not None and enemy_tower is not None and self._in_tower_range(our_hero, enemy_tower) > 0),
+            safe_push,
+            tower_tanking_minion,
+            enemy_threat,
         ]
 
     def _legal_features(self, observation):
@@ -336,3 +345,21 @@ class Top1FeatureBuilder:
             return 0.0
         attack_range = float(get_any(tower, "attack_range", default=0) or 0) + TOWER_DANGER_MARGIN
         return float(distance(hero, tower) <= attack_range)
+
+    def _safe_push_state(self, our_hero, enemy_hero, enemy_tower, our_soldiers):
+        if not our_hero or not enemy_tower:
+            return 0.0, 0.0, 1.0
+
+        target = get_any(enemy_tower, "attack_target", default=0)
+        soldier_ids = {runtime_id(s) for s in our_soldiers}
+        tower_tanking_minion = float(target in soldier_ids and target != 0)
+
+        enemy_threat = 0.0
+        if enemy_hero and hp_ratio(enemy_hero) > 0 and get_any(enemy_hero, "revive_time", default=0) <= 0:
+            if is_visible_to(enemy_hero, camp_id(our_hero.get("camp"))):
+                enemy_range = float(get_any(enemy_hero, "attack_range", default=0) or 0) + 2000.0
+                enemy_threat = float(distance(our_hero, enemy_hero) <= enemy_range)
+
+        hero_can_hit_tower = float(distance(our_hero, enemy_tower) <= float(get_any(our_hero, "attack_range", default=0) or 0) + 1000.0)
+        safe_push = float(tower_tanking_minion and not enemy_threat and hero_can_hit_tower)
+        return safe_push, tower_tanking_minion, enemy_threat
