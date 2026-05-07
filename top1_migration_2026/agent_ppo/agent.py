@@ -306,6 +306,13 @@ class Agent(BaseAgent):
         if legal_actions[0][button] <= 0:
             return None
         target_legal = legal_actions[-1].reshape([self.legal_action_size[0], self.label_size_list[-1]])[button]
+
+        # Target 7 is the enemy organ/tower bucket in the 2025 top1 target
+        # convention.  Prefer it only when the tower is tanking our minion and
+        # the enemy hero is dead, unseen, or out of our danger range.
+        if self._safe_enemy_tower_target(observation) is not None and target_legal[7] > 0:
+            return [button, 0, 0, 0, 0, 7]
+
         for target in [1, 3, 4, 5, 6, 7]:
             if target_legal[target] > 0:
                 return [button, 0, 0, 0, 0, target]
@@ -338,12 +345,22 @@ class Agent(BaseAgent):
 
         candidates = []
         for other in frame_state.get("hero_states", []):
-            if camp_id(other.get("camp")) != player_camp and float(other.get("hp", 0) or 0) > 0:
+            if (
+                camp_id(other.get("camp")) != player_camp
+                and float(other.get("hp", 0) or 0) > 0
+                and not self._is_unseen_actor(other)
+            ):
                 candidates.append(other)
         for npc in frame_state.get("npc_states", []):
-            if camp_id(npc.get("camp")) != player_camp and float(npc.get("hp", 0) or 0) > 0:
+            if camp_id(npc.get("camp")) != player_camp and float(npc.get("hp", 0) or 0) > 0 and not self._is_unseen_actor(npc):
                 candidates.append(npc)
+        safe_tower = self._safe_enemy_tower_target(observation)
+        if safe_tower is not None:
+            return self._actor_pos(safe_tower)
         if not candidates:
+            enemy_tower = self._nearest_enemy_tower(observation, hero)
+            if enemy_tower is not None:
+                return self._actor_pos(enemy_tower)
             return [0.0, 0.0]
         return self._actor_pos(min(candidates, key=lambda actor: math.dist(hero_pos, self._actor_pos(actor))))
 
@@ -354,6 +371,68 @@ class Agent(BaseAgent):
         if isinstance(loc, (list, tuple)) and len(loc) >= 3:
             return [float(loc[0] or 0), float(loc[2] or 0)]
         return [0.0, 0.0]
+
+    def _is_unseen_actor(self, actor):
+        x, z = self._actor_pos(actor)
+        return abs(x) >= 100000 or abs(z) >= 100000
+
+    def _is_soldier_actor(self, actor):
+        return actor.get("actor_type") == 1 or actor.get("sub_type") in (1, 11, "ACTOR_SUB_SOLDIER")
+
+    def _is_tower_actor(self, actor):
+        return actor.get("actor_type") == 2 and actor.get("sub_type") in (21, 23, 24, "ACTOR_SUB_TOWER")
+
+    def _nearest_enemy_tower(self, observation, hero):
+        frame_state = observation.get("frame_state", {})
+        player_camp = camp_id(observation.get("camp", observation.get("player_camp", self.hero_camp)))
+        towers = [
+            npc
+            for npc in frame_state.get("npc_states", [])
+            if self._is_tower_actor(npc)
+            and camp_id(npc.get("camp")) != player_camp
+            and float(npc.get("hp", 0) or 0) > 0
+            and not self._is_unseen_actor(npc)
+        ]
+        if not towers:
+            return None
+        hero_pos = self._actor_pos(hero)
+        return min(towers, key=lambda tower: math.dist(hero_pos, self._actor_pos(tower)))
+
+    def _safe_enemy_tower_target(self, observation):
+        hero = self._main_hero_state(observation)
+        if not hero:
+            return None
+        frame_state = observation.get("frame_state", {})
+        player_camp = camp_id(observation.get("camp", observation.get("player_camp", self.hero_camp)))
+        enemy_tower = self._nearest_enemy_tower(observation, hero)
+        if enemy_tower is None:
+            return None
+
+        tower_target = enemy_tower.get("attack_target", 0)
+        our_soldier_ids = {
+            npc.get("runtime_id", npc.get("player_id"))
+            for npc in frame_state.get("npc_states", [])
+            if self._is_soldier_actor(npc) and camp_id(npc.get("camp")) == player_camp and float(npc.get("hp", 0) or 0) > 0
+        }
+        tower_tanking_minion = tower_target in our_soldier_ids and tower_target != 0
+        if not tower_tanking_minion:
+            return None
+
+        hero_can_hit_tower = math.dist(self._actor_pos(hero), self._actor_pos(enemy_tower)) <= float(hero.get("attack_range", 0) or 0) + 1000.0
+        if not hero_can_hit_tower:
+            return None
+
+        for enemy in frame_state.get("hero_states", []):
+            if camp_id(enemy.get("camp")) == player_camp:
+                continue
+            if float(enemy.get("hp", 0) or 0) <= 0 or float(enemy.get("revive_time", 0) or 0) > 0:
+                continue
+            if self._is_unseen_actor(enemy):
+                continue
+            enemy_range = float(enemy.get("attack_range", 0) or 0) + 2000.0
+            if math.dist(self._actor_pos(hero), self._actor_pos(enemy)) <= enemy_range:
+                return None
+        return enemy_tower
 
     def _delta_action_16x16(self, center, target):
         delta = np.array(target, dtype=np.float32) - np.array(center, dtype=np.float32)
