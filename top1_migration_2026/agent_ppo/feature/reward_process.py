@@ -48,6 +48,14 @@ def pos(actor):
     return (0, 0)
 
 
+def actor_id(actor):
+    return get_any(actor or {}, "runtime_id", "player_id", default=0)
+
+
+def hp_ratio(actor):
+    return float(get_any(actor or {}, "hp", default=0) or 0) / max(float(get_any(actor or {}, "max_hp", default=1) or 1), 1.0)
+
+
 class RewardStruct:
     def __init__(self, m_weight=0.0):
         self.cur_frame_value = 0.0
@@ -146,6 +154,10 @@ class GameRewardManager:
                 reward_struct.cur_frame_value = self.calculate_danger(main_hero, enemy_tower)
             elif reward_name == "idle":
                 reward_struct.cur_frame_value = self.calculate_idle(main_hero)
+            elif reward_name == "tower_attack":
+                reward_struct.cur_frame_value = self.calculate_tower_attack(main_hero, enemy_tower)
+            elif reward_name == "safe_push":
+                reward_struct.cur_frame_value = self.calculate_safe_push(frame_data, main_hero, enemy_hero, enemy_tower)
 
     def calculate_last_hit(self, frame_data, main_hero, enemy_hero):
         value = 0.0
@@ -188,6 +200,39 @@ class GameRewardManager:
         in_tower_range = math.dist(pos(main_hero), pos(enemy_tower)) <= tower_range
         tower_targeting = get_any(enemy_tower, "attack_target", default=0) == get_any(main_hero, "runtime_id", "player_id", default=-1)
         return float((hp_rate < 0.55 and in_tower_range) or tower_targeting)
+
+    def calculate_tower_attack(self, main_hero, enemy_tower):
+        if not main_hero or not enemy_tower:
+            return 0.0
+        enemy_tower_id = actor_id(enemy_tower)
+        if get_any(main_hero, "attack_target", default=0) == enemy_tower_id:
+            return 1.0
+        for hit in get_any(main_hero, "hit_target_info", default=[]) or []:
+            if get_any(hit, "hit_target", "runtime_id", default=0) == enemy_tower_id:
+                return 1.0
+        return 0.0
+
+    def calculate_safe_push(self, frame_data, main_hero, enemy_hero, enemy_tower):
+        if not main_hero or not enemy_tower:
+            return 0.0
+        main_camp = camp_id(main_hero.get("camp"))
+        target = get_any(enemy_tower, "attack_target", default=0)
+        soldier_ids = {
+            actor_id(npc)
+            for npc in frame_data.get("npc_states", [])
+            if is_soldier_actor(npc) and camp_id(npc.get("camp")) == main_camp
+        }
+        tower_tanking_minion = target in soldier_ids and target != 0
+        if not tower_tanking_minion:
+            return 0.0
+
+        enemy_threat = False
+        if enemy_hero and hp_ratio(enemy_hero) > 0 and get_any(enemy_hero, "revive_time", default=0) <= 0:
+            enemy_range = float(get_any(enemy_hero, "attack_range", default=0) or 0) + 2000.0
+            enemy_threat = math.dist(pos(main_hero), pos(enemy_hero)) <= enemy_range
+
+        hero_can_hit_tower = math.dist(pos(main_hero), pos(enemy_tower)) <= float(get_any(main_hero, "attack_range", default=0) or 0) + 1000.0
+        return float(hero_can_hit_tower and not enemy_threat)
 
     def calculate_idle(self, main_hero):
         cur_pos = pos(main_hero)
@@ -258,7 +303,7 @@ class GameRewardManager:
                     reward_struct.value = 0.0
             elif reward_name == "last_hit":
                 reward_struct.value = self.m_main_calc_frame_map[reward_name].cur_frame_value
-            elif reward_name in ("danger", "idle"):
+            elif reward_name in ("danger", "idle", "tower_attack", "safe_push"):
                 reward_struct.value = self.m_main_calc_frame_map[reward_name].cur_frame_value
             else:
                 reward_struct.value = self.zero_sum_delta(reward_name)
