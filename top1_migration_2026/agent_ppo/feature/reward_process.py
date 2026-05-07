@@ -29,12 +29,14 @@ def camp_id(camp):
 
 def is_tower(npc):
     st = npc.get("sub_type")
-    return st == 21 or st == "ACTOR_SUB_TOWER"
+    at = npc.get("actor_type")
+    return at == 2 and st in (21, 23, 24, "ACTOR_SUB_TOWER")
 
 
 def is_soldier_actor(actor):
     st = actor.get("sub_type") if isinstance(actor, dict) else None
-    return st == 1 or st == "ACTOR_SUB_SOLDIER"
+    at = actor.get("actor_type") if isinstance(actor, dict) else None
+    return at == 1 or st in (1, 11, "ACTOR_SUB_SOLDIER")
 
 
 def pos(actor):
@@ -68,6 +70,7 @@ class GameRewardManager:
         self.m_enemy_calc_frame_map = init_calc_frame_map()
         self.time_scale_arg = GameConfig.TIME_SCALE_ARG
         self.m_each_level_max_exp = {}
+        self.last_main_pos = None
         self.init_max_exp_of_each_hero()
 
     def init_max_exp_of_each_hero(self):
@@ -139,6 +142,10 @@ class GameRewardManager:
                 reward_struct.cur_frame_value = self.calculate_exp_sum(main_hero)
             elif reward_name == "forward":
                 reward_struct.cur_frame_value = self.calculate_forward(main_hero, main_tower, enemy_tower)
+            elif reward_name == "danger":
+                reward_struct.cur_frame_value = self.calculate_danger(main_hero, enemy_tower)
+            elif reward_name == "idle":
+                reward_struct.cur_frame_value = self.calculate_idle(main_hero)
 
     def calculate_last_hit(self, frame_data, main_hero, enemy_hero):
         value = 0.0
@@ -169,9 +176,28 @@ class GameRewardManager:
         dist_hero2emy = math.dist(pos(main_hero), pos(enemy_tower))
         dist_main2emy = max(math.dist(pos(main_tower), pos(enemy_tower)), 1.0)
         hp_rate = float(get_any(main_hero, "hp", default=0) or 0) / max(float(get_any(main_hero, "max_hp", default=1) or 1), 1.0)
-        if hp_rate > 0.99 and dist_hero2emy > dist_main2emy:
+        if hp_rate > 0.45:
             return (dist_main2emy - dist_hero2emy) / dist_main2emy
         return 0.0
+
+    def calculate_danger(self, main_hero, enemy_tower):
+        if not main_hero or not enemy_tower:
+            return 0.0
+        hp_rate = float(get_any(main_hero, "hp", default=0) or 0) / max(float(get_any(main_hero, "max_hp", default=1) or 1), 1.0)
+        tower_range = float(get_any(enemy_tower, "attack_range", default=0) or 0) + 2000.0
+        in_tower_range = math.dist(pos(main_hero), pos(enemy_tower)) <= tower_range
+        tower_targeting = get_any(enemy_tower, "attack_target", default=0) == get_any(main_hero, "runtime_id", "player_id", default=-1)
+        return float((hp_rate < 0.55 and in_tower_range) or tower_targeting)
+
+    def calculate_idle(self, main_hero):
+        cur_pos = pos(main_hero)
+        if self.last_main_pos is None:
+            self.last_main_pos = cur_pos
+            return 0.0
+        moved = math.dist(cur_pos, self.last_main_pos)
+        self.last_main_pos = cur_pos
+        hp_rate = float(get_any(main_hero, "hp", default=0) or 0) / max(float(get_any(main_hero, "max_hp", default=1) or 1), 1.0)
+        return float(hp_rate > 0.5 and moved < 120.0)
 
     def frame_data_process(self, frame_data):
         main_camp, enemy_camp = -1, -1
@@ -231,6 +257,8 @@ class GameRewardManager:
                 if GameConfig.REMOVE_FORWARD_AFTER is not None and frame_no > GameConfig.REMOVE_FORWARD_AFTER:
                     reward_struct.value = 0.0
             elif reward_name == "last_hit":
+                reward_struct.value = self.m_main_calc_frame_map[reward_name].cur_frame_value
+            elif reward_name in ("danger", "idle"):
                 reward_struct.value = self.m_main_calc_frame_map[reward_name].cur_frame_value
             else:
                 reward_struct.value = self.zero_sum_delta(reward_name)
