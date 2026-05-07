@@ -24,7 +24,7 @@ class GameConfig:
     TIME_SCALE_ARG = 8000
     REWARD_WITHOUT_TIME_SCALE = set()
     MODEL_SAVE_INTERVAL = 1800
-    CAMP_HEROES = [[112], [133]]
+    CAMP_HEROES = [112, 133]
 
     # Deterministic summoner skill policy used by Agent.init_config.
     # 80102 = Heal. Pair this with Agent's low-hp action override.
