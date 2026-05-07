@@ -19,14 +19,29 @@ class GameConfig:
         "kill": 2.0,
         "last_hit": 0.4,
         "forward": 0.02,
-        "danger": -0.2,
+        "danger": -0.7,
         "idle": -0.02,
+        "attack_hit": 0.06,
+        "attack_power": 0.02,
+        "attack_speed": 0.02,
         "tower_attack": 0.25,
-        "safe_push": 0.04,
+        "safe_push": 0.08,
+        "safe_tower_damage": 2.0,
     }
     REMOVE_FORWARD_AFTER = 1200
     TIME_SCALE_ARG = 8000
-    REWARD_WITHOUT_TIME_SCALE = {"death", "kill", "danger", "idle", "tower_attack", "safe_push"}
+    REWARD_WITHOUT_TIME_SCALE = {
+        "death",
+        "kill",
+        "danger",
+        "idle",
+        "attack_hit",
+        "attack_power",
+        "attack_speed",
+        "tower_attack",
+        "safe_push",
+        "safe_tower_damage",
+    }
     MODEL_SAVE_INTERVAL = 1800
     CAMP_HEROES = [112, 133]
 
