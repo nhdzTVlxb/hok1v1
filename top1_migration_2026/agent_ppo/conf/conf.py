@@ -32,9 +32,10 @@ class GameConfig:
         112: 80102,
         133: 80102,
     }
-    LOW_HP_HEAL_THRESHOLD = 0.80
+    LOW_HP_HEAL_THRESHOLD = 0.75
     CHOSEN_SUMMONER_BUTTON = 8
     SELF_TARGET_INDEX = 2
+    PASSIVE_BUTTONS = {0, 1, 7, 8, 9, 10, 11}
 
 
 class Args:
