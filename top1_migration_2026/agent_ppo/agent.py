@@ -42,6 +42,18 @@ SUMMONER_SKILL_MAP = {
 SUMMONER_SKILL_IDS = list(SUMMONER_SKILL_MAP.keys())
 
 
+def camp_id(camp):
+    if isinstance(camp, str):
+        if camp in ("0", "1", "2"):
+            value = int(camp)
+            return value + 1 if value in (0, 1) else value
+        if camp[-1:].isdigit():
+            return int(camp[-1])
+    if isinstance(camp, int):
+        return camp + 1 if camp in (0, 1) else camp
+    return camp
+
+
 class Agent(BaseAgent):
     def __init__(self, agent_type="player", device=None, logger=None, monitor=None):
         self.cur_model_name = ""
@@ -108,11 +120,11 @@ class Agent(BaseAgent):
     def reset(self, observation):
         # Reset function, called at the beginning of each episode
         # 重置函数，每局开始时调用
-        self.hero_camp = observation.get("camp", observation.get("player_camp", 1))
+        self.hero_camp = camp_id(observation.get("camp", observation.get("player_camp", 1)))
         self.player_id = observation["player_id"]
         self.lstm_hidden = np.zeros([self.lstm_unit_size])
         self.lstm_cell = np.zeros([self.lstm_unit_size])
-        self.reward_manager = GameRewardManager(self.player_id)
+        self.reward_manager = GameRewardManager(self.player_id, self.hero_camp)
         self.feature_builder = Top1FeatureBuilder(self.logger)
 
     def _model_inference(self, list_obs_data):
@@ -250,12 +262,12 @@ class Agent(BaseAgent):
 
     def _main_hero_state(self, observation):
         player_id = observation.get("player_id", self.player_id)
-        player_camp = observation.get("camp", observation.get("player_camp", self.hero_camp))
+        player_camp = camp_id(observation.get("camp", observation.get("player_camp", self.hero_camp)))
         for hero in observation.get("frame_state", {}).get("hero_states", []):
             if hero.get("runtime_id", hero.get("player_id")) == player_id:
                 return hero
         for hero in observation.get("frame_state", {}).get("hero_states", []):
-            if hero.get("camp") == player_camp:
+            if camp_id(hero.get("camp")) == player_camp:
                 return hero
         return None
 
