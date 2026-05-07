@@ -1,4 +1,4 @@
 # hok1v1
-- **raw JSON** → the actual data payload  
-- **schema JSON** → the data dictionary / schema definition  
-- **OBS_STRUCTURE_SUMMARY.txt** → a human-readable summary for readers
+- raw JSON = data body
+- schema JSON = data catalog / structural map 
+- OBS_STRUCTURE_SUMMARY.txt is provided for readers to understand
