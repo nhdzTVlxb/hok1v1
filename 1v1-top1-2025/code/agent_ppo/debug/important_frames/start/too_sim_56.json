@@ -1,0 +1,32 @@
+{
+  "0": {
+    "env_id": "19869571",
+    "player_id": 31,
+    "player_camp": 1,
+    "legal_action": "type=float64, shape=(184,)",
+    "sub_action_mask": "type=float64, shape=(12, 6)",
+    "frame_state": {
+      "frameNo": 56,
+      "hero_states": "type=object, shape=(2,)",
+      "npc_states": "type=object, shape=(6,)",
+      "frame_action": {},
+      "map_state": true
+    },
+    "win": 0
+  },
+  "1": {
+    "env_id": "19869571",
+    "player_id": 32,
+    "player_camp": 2,
+    "legal_action": "type=float64, shape=(184,)",
+    "sub_action_mask": "type=float64, shape=(12, 6)",
+    "frame_state": {
+      "frameNo": 56,
+      "hero_states": "type=object, shape=(2,)",
+      "npc_states": "type=object, shape=(6,)",
+      "frame_action": {},
+      "map_state": true
+    },
+    "win": 0
+  }
+}

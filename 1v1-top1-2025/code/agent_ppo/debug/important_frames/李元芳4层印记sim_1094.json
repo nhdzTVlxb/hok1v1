@@ -1,0 +1,2754 @@
+{
+  "0": {
+    "env_id": "80802699",
+    "player_id": 31,
+    "player_camp": 1,
+    "legal_action": "type=float64, shape=(184,)",
+    "sub_action_mask": "type=float64, shape=(12, 6)",
+    "frame_state": {
+      "frameNo": 1094,
+      "hero_states": [
+        {
+          "player_id": 31,
+          "actor_state": {
+            "config_id": 173,
+            "runtime_id": 7,
+            "actor_type": "ACTOR_HERO",
+            "sub_type": "ACTOR_SUB_NONE",
+            "camp": "PLAYERCAMP_1",
+            "behav_mode": "Normal_Attack",
+            "location": {
+              "x": -290,
+              "y": 48,
+              "z": 422
+            },
+            "forward": {
+              "x": 601,
+              "y": 0,
+              "z": -799
+            },
+            "hp": 2337,
+            "max_hp": 3007,
+            "values": {
+              "phy_atk": 190,
+              "phy_def": 87,
+              "mgc_atk": 0,
+              "mgc_def": 50,
+              "mov_spd": 4028,
+              "atk_spd": 4600,
+              "ep": 389,
+              "max_ep": 440,
+              "hp_recover": 37,
+              "ep_recover": 15,
+              "phy_armor_hurt": 100,
+              "mgc_armor_hurt": 0,
+              "crit_rate": 0,
+              "crit_effe": 10000,
+              "phy_vamp": 640,
+              "mgc_vamp": 0,
+              "cd_reduce": 0,
+              "ctrl_reduce": 0,
+              "monster_endurance": 0,
+              "organ_conti_attack": 0
+            },
+            "abilities": "type=bool, shape=(46,)",
+            "attack_range": 8000,
+            "attack_target": 0,
+            "kill_income": 150,
+            "camp_visible": "type=bool, shape=(2,)",
+            "sight_area": 7000,
+            "buff_state": {
+              "buff_skills": [
+                {
+                  "configId": 173040,
+                  "times": 0,
+                  "startTime": "66"
+                },
+                {
+                  "configId": 914110,
+                  "times": 0,
+                  "startTime": "2046"
+                },
+                {
+                  "configId": 173150,
+                  "times": 0,
+                  "startTime": "33363"
+                },
+                {
+                  "configId": 173160,
+                  "times": 0,
+                  "startTime": "33363"
+                },
+                {
+                  "configId": 173990,
+                  "times": 0,
+                  "startTime": "33363"
+                },
+                {
+                  "configId": 173999,
+                  "times": 0,
+                  "startTime": "33363"
+                },
+                {
+                  "configId": 173170,
+                  "times": 0,
+                  "startTime": "33363"
+                },
+                {
+                  "configId": 10000,
+                  "times": 0,
+                  "startTime": "35442"
+                }
+              ]
+            },
+            "hurt_hero_info": [
+              {
+                "hurt_target": 14,
+                "hurt": 570
+              }
+            ]
+          },
+          "skill_state": {
+            "slot_states": [
+              {
+                "configId": 17307,
+                "slot_type": "SLOT_SKILL_0",
+                "level": 1,
+                "usable": false,
+                "cooldown": 363,
+                "cooldown_max": 759,
+                "usedTimes": 3,
+                "hitHeroTimes": 3,
+                "succUsedInFrame": 0,
+                "nextConfigID": 17308,
+                "comboEffectTime": 3604
+              },
+              {
+                "configId": 17310,
+                "slot_type": "SLOT_SKILL_1",
+                "level": 1,
+                "usable": false,
+                "cooldown": 7228,
+                "cooldown_max": 10000,
+                "usedTimes": 1,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 17320,
+                "slot_type": "SLOT_SKILL_2",
+                "level": 0,
+                "usable": false,
+                "cooldown": 0,
+                "cooldown_max": 11000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 17330,
+                "slot_type": "SLOT_SKILL_3",
+                "level": 0,
+                "usable": false,
+                "cooldown": 0,
+                "cooldown_max": 36000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 90003,
+                "slot_type": "SLOT_SKILL_4",
+                "level": 1,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 60000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 80115,
+                "slot_type": "SLOT_SKILL_5",
+                "level": 1,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 120000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 90005,
+                "slot_type": "SLOT_SKILL_6",
+                "level": 1,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 0,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              }
+            ]
+          },
+          "equip_state": {
+            "equips": [
+              {
+                "configId": 1411,
+                "amount": 1,
+                "buyPrice": 250
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              }
+            ]
+          },
+          "buff_state": {
+            "buff_skills": [
+              {
+                "configId": 173040,
+                "times": 0,
+                "startTime": "66"
+              },
+              {
+                "configId": 914110,
+                "times": 0,
+                "startTime": "2046"
+              },
+              {
+                "configId": 173150,
+                "times": 0,
+                "startTime": "33363"
+              },
+              {
+                "configId": 173160,
+                "times": 0,
+                "startTime": "33363"
+              },
+              {
+                "configId": 173990,
+                "times": 0,
+                "startTime": "33363"
+              },
+              {
+                "configId": 173999,
+                "times": 0,
+                "startTime": "33363"
+              },
+              {
+                "configId": 173170,
+                "times": 0,
+                "startTime": "33363"
+              },
+              {
+                "configId": 10000,
+                "times": 0,
+                "startTime": "35442"
+              }
+            ]
+          },
+          "level": 1,
+          "exp": 72,
+          "money": 194,
+          "revive_time": 0,
+          "killCnt": 0,
+          "deadCnt": 0,
+          "assistCnt": 0,
+          "moneyCnt": 444,
+          "totalHurt": 570,
+          "totalHurtToHero": 570,
+          "totalBeHurtByHero": 0,
+          "passive_skill": [
+            {
+              "passive_skillid": 17300,
+              "cooldown": 0
+            },
+            {
+              "passive_skillid": 17301,
+              "cooldown": 0
+            }
+          ],
+          "real_cmd": [
+            {
+              "command_type": "COMMAND_TYPE_AttackCommon",
+              "move_pos": {
+                "destPos": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "move_dir": {
+                "degree": 0
+              },
+              "attack_common": {
+                "actorID": 0,
+                "start": 0
+              },
+              "attack_topos": {
+                "destPos": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "attack_actor": {
+                "actorID": 0
+              },
+              "obj_skill": {
+                "skillID": 0,
+                "actorID": 0,
+                "slotType": "SLOT_SKILL_0"
+              },
+              "dir_skill": {
+                "skillID": 0,
+                "actorID": 0,
+                "slotType": "SLOT_SKILL_0",
+                "degree": 0
+              },
+              "pos_skill": {
+                "skillID": 0,
+                "destPos": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "slotType": "SLOT_SKILL_0"
+              },
+              "learn_skill": {
+                "slotType": "SLOT_SKILL_0",
+                "level": 0
+              },
+              "buy_equip": {
+                "equipId": 0,
+                "obj_id": 0
+              },
+              "sell_equip": {
+                "equipIndex": 0
+              },
+              "charge_skill": {
+                "slotType": "SLOT_SKILL_0",
+                "state": 0,
+                "degree": 0
+              }
+            }
+          ],
+          "canAbortCurSkill": "type=bool, shape=(16,)",
+          "isInGrass": false,
+          "canBuyEquip": false
+        },
+        {
+          "player_id": 32,
+          "actor_state": {
+            "config_id": 173,
+            "runtime_id": 14,
+            "actor_type": "ACTOR_HERO",
+            "sub_type": "ACTOR_SUB_NONE",
+            "camp": "PLAYERCAMP_2",
+            "behav_mode": "Direction_Move",
+            "location": {
+              "x": -666,
+              "y": 48,
+              "z": -49
+            },
+            "forward": {
+              "x": 277,
+              "y": 0,
+              "z": 961
+            },
+            "hp": 1939,
+            "max_hp": 3007,
+            "values": {
+              "phy_atk": 190,
+              "phy_def": 87,
+              "mgc_atk": 0,
+              "mgc_def": 50,
+              "mov_spd": 4028,
+              "atk_spd": 600,
+              "ep": 440,
+              "max_ep": 440,
+              "hp_recover": 37,
+              "ep_recover": 15,
+              "phy_armor_hurt": 100,
+              "mgc_armor_hurt": 0,
+              "crit_rate": 0,
+              "crit_effe": 10000,
+              "phy_vamp": 640,
+              "mgc_vamp": 0,
+              "cd_reduce": 0,
+              "ctrl_reduce": 0,
+              "monster_endurance": 0,
+              "organ_conti_attack": 0
+            },
+            "abilities": "type=bool, shape=(46,)",
+            "attack_range": 7000,
+            "attack_target": 0,
+            "kill_income": 150,
+            "camp_visible": "type=bool, shape=(2,)",
+            "sight_area": 7000,
+            "buff_state": {
+              "buff_skills": [
+                {
+                  "configId": 173040,
+                  "times": 0,
+                  "startTime": "66"
+                },
+                {
+                  "configId": 914110,
+                  "times": 0,
+                  "startTime": "2046"
+                },
+                {
+                  "configId": 173101,
+                  "times": 0,
+                  "startTime": "33594"
+                },
+                {
+                  "configId": 173120,
+                  "times": 0,
+                  "startTime": "33594"
+                },
+                {
+                  "configId": 10000,
+                  "times": 0,
+                  "startTime": "35475"
+                },
+                {
+                  "configId": 173000,
+                  "times": 0,
+                  "startTime": "35838"
+                },
+                {
+                  "configId": 173151,
+                  "times": 0,
+                  "startTime": "35871"
+                }
+              ],
+              "buff_marks": [
+                {
+                  "configId": 17300,
+                  "layer": 4,
+                  "origin_actorId": 7
+                },
+                {
+                  "configId": 17310,
+                  "layer": 1,
+                  "origin_actorId": 7
+                }
+              ]
+            }
+          },
+          "skill_state": {
+            "slot_states": [
+              {
+                "configId": 17300,
+                "slot_type": "SLOT_SKILL_0",
+                "level": 0,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 1023,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 17310,
+                "slot_type": "SLOT_SKILL_1",
+                "level": 0,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 10000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 17320,
+                "slot_type": "SLOT_SKILL_2",
+                "level": 0,
+                "usable": false,
+                "cooldown": 0,
+                "cooldown_max": 11000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 17330,
+                "slot_type": "SLOT_SKILL_3",
+                "level": 0,
+                "usable": false,
+                "cooldown": 0,
+                "cooldown_max": 36000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 90003,
+                "slot_type": "SLOT_SKILL_4",
+                "level": 0,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 60000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 80115,
+                "slot_type": "SLOT_SKILL_5",
+                "level": 0,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 120000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 90005,
+                "slot_type": "SLOT_SKILL_6",
+                "level": 0,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 0,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              }
+            ]
+          },
+          "equip_state": {
+            "equips": [
+              {
+                "configId": 1411,
+                "amount": 1,
+                "buyPrice": 250
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              }
+            ]
+          },
+          "buff_state": {
+            "buff_skills": [
+              {
+                "configId": 173040,
+                "times": 0,
+                "startTime": "66"
+              },
+              {
+                "configId": 914110,
+                "times": 0,
+                "startTime": "2046"
+              },
+              {
+                "configId": 173101,
+                "times": 0,
+                "startTime": "33594"
+              },
+              {
+                "configId": 173120,
+                "times": 0,
+                "startTime": "33594"
+              },
+              {
+                "configId": 10000,
+                "times": 0,
+                "startTime": "35475"
+              },
+              {
+                "configId": 173000,
+                "times": 0,
+                "startTime": "35838"
+              },
+              {
+                "configId": 173151,
+                "times": 0,
+                "startTime": "35871"
+              }
+            ],
+            "buff_marks": [
+              {
+                "configId": 17300,
+                "layer": 4,
+                "origin_actorId": 7
+              },
+              {
+                "configId": 17310,
+                "layer": 1,
+                "origin_actorId": 7
+              }
+            ]
+          },
+          "level": 1,
+          "exp": 72,
+          "money": 194,
+          "revive_time": 0,
+          "killCnt": 0,
+          "deadCnt": 0,
+          "assistCnt": 0,
+          "moneyCnt": 444,
+          "totalHurt": 0,
+          "totalHurtToHero": 0,
+          "totalBeHurtByHero": 570,
+          "passive_skill": [
+            {
+              "passive_skillid": 17300,
+              "cooldown": 0
+            },
+            {
+              "passive_skillid": 17301,
+              "cooldown": 0
+            }
+          ],
+          "real_cmd": [
+            {
+              "command_type": "COMMAND_TYPE_MoveDir",
+              "move_pos": {
+                "destPos": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "move_dir": {
+                "degree": -73
+              },
+              "attack_common": {
+                "actorID": 0,
+                "start": 0
+              },
+              "attack_topos": {
+                "destPos": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "attack_actor": {
+                "actorID": 0
+              },
+              "obj_skill": {
+                "skillID": 0,
+                "actorID": 0,
+                "slotType": "SLOT_SKILL_0"
+              },
+              "dir_skill": {
+                "skillID": 0,
+                "actorID": 0,
+                "slotType": "SLOT_SKILL_0",
+                "degree": 0
+              },
+              "pos_skill": {
+                "skillID": 0,
+                "destPos": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "slotType": "SLOT_SKILL_0"
+              },
+              "learn_skill": {
+                "slotType": "SLOT_SKILL_0",
+                "level": 0
+              },
+              "buy_equip": {
+                "equipId": 0,
+                "obj_id": 0
+              },
+              "sell_equip": {
+                "equipIndex": 0
+              },
+              "charge_skill": {
+                "slotType": "SLOT_SKILL_0",
+                "state": 0,
+                "degree": 0
+              }
+            }
+          ],
+          "isInGrass": false,
+          "canBuyEquip": false
+        }
+      ],
+      "npc_states": [
+        {
+          "config_id": 6804,
+          "runtime_id": 26,
+          "actor_type": "ACTOR_MONSTER",
+          "sub_type": "ACTOR_SUB_SOLDIER",
+          "camp": "PLAYERCAMP_2",
+          "behav_mode": "Attack_Path",
+          "location": {
+            "x": 2803,
+            "y": 48,
+            "z": 5862
+          },
+          "forward": {
+            "x": -450,
+            "y": 0,
+            "z": -893
+          },
+          "hp": 1356,
+          "max_hp": 1356,
+          "values": {
+            "phy_atk": 90,
+            "phy_def": 180,
+            "mgc_atk": 90,
+            "mgc_def": 0,
+            "mov_spd": 3088,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 750,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 7000,
+          "attack_target": 21,
+          "kill_income": 46,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8500,
+          "buff_state": {}
+        },
+        {
+          "config_id": 6801,
+          "runtime_id": 25,
+          "actor_type": "ACTOR_MONSTER",
+          "sub_type": "ACTOR_SUB_SOLDIER",
+          "camp": "PLAYERCAMP_1",
+          "behav_mode": "Attack_Path",
+          "location": {
+            "x": -4927,
+            "y": 48,
+            "z": -4185
+          },
+          "forward": {
+            "x": 723,
+            "y": 0,
+            "z": 691
+          },
+          "hp": 1356,
+          "max_hp": 1356,
+          "values": {
+            "phy_atk": 90,
+            "phy_def": 180,
+            "mgc_atk": 90,
+            "mgc_def": 0,
+            "mov_spd": 3088,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 750,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 7000,
+          "attack_target": 22,
+          "kill_income": 46,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8500,
+          "buff_state": {}
+        },
+        {
+          "config_id": 6804,
+          "runtime_id": 24,
+          "actor_type": "ACTOR_MONSTER",
+          "sub_type": "ACTOR_SUB_SOLDIER",
+          "camp": "PLAYERCAMP_2",
+          "behav_mode": "Attack_Path",
+          "location": {
+            "x": 3626,
+            "y": 48,
+            "z": 5475
+          },
+          "forward": {
+            "x": -559,
+            "y": 0,
+            "z": -829
+          },
+          "hp": 1356,
+          "max_hp": 1356,
+          "values": {
+            "phy_atk": 90,
+            "phy_def": 180,
+            "mgc_atk": 90,
+            "mgc_def": 0,
+            "mov_spd": 3088,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 750,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 7000,
+          "attack_target": 21,
+          "kill_income": 46,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8500,
+          "buff_state": {}
+        },
+        {
+          "config_id": 6801,
+          "runtime_id": 23,
+          "actor_type": "ACTOR_MONSTER",
+          "sub_type": "ACTOR_SUB_SOLDIER",
+          "camp": "PLAYERCAMP_1",
+          "behav_mode": "Attack_Path",
+          "location": {
+            "x": -4100,
+            "y": 48,
+            "z": -4617
+          },
+          "forward": {
+            "x": 628,
+            "y": 0,
+            "z": 778
+          },
+          "hp": 1356,
+          "max_hp": 1356,
+          "values": {
+            "phy_atk": 90,
+            "phy_def": 180,
+            "mgc_atk": 90,
+            "mgc_def": 0,
+            "mov_spd": 3088,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 750,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 7000,
+          "attack_target": 22,
+          "kill_income": 46,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8500,
+          "buff_state": {}
+        },
+        {
+          "config_id": 6803,
+          "runtime_id": 22,
+          "actor_type": "ACTOR_MONSTER",
+          "sub_type": "ACTOR_SUB_SOLDIER",
+          "camp": "PLAYERCAMP_2",
+          "behav_mode": "Attack_Path",
+          "location": {
+            "x": 231,
+            "y": 48,
+            "z": 748
+          },
+          "forward": {
+            "x": -453,
+            "y": 0,
+            "z": -892
+          },
+          "hp": 729,
+          "max_hp": 1488,
+          "values": {
+            "phy_atk": 60,
+            "phy_def": 180,
+            "mgc_atk": 60,
+            "mgc_def": 0,
+            "mov_spd": 3088,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 750,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 1500,
+          "attack_target": 21,
+          "kill_income": 75,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 5500,
+          "buff_state": {}
+        },
+        {
+          "config_id": 6800,
+          "runtime_id": 21,
+          "actor_type": "ACTOR_MONSTER",
+          "sub_type": "ACTOR_SUB_SOLDIER",
+          "camp": "PLAYERCAMP_1",
+          "behav_mode": "Attack_Path",
+          "location": {
+            "x": -413,
+            "y": 48,
+            "z": -521
+          },
+          "forward": {
+            "x": 453,
+            "y": 0,
+            "z": 892
+          },
+          "hp": 913,
+          "max_hp": 1488,
+          "values": {
+            "phy_atk": 60,
+            "phy_def": 180,
+            "mgc_atk": 60,
+            "mgc_def": 0,
+            "mov_spd": 3088,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 750,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 1500,
+          "attack_target": 22,
+          "kill_income": 75,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 5500,
+          "buff_state": {}
+        },
+        {
+          "config_id": 46,
+          "runtime_id": 16,
+          "actor_type": "ACTOR_ORGAN",
+          "sub_type": "ACTOR_SUB_TOWER_SPRING",
+          "camp": "PLAYERCAMP_2",
+          "behav_mode": "Attack_Move",
+          "location": {
+            "x": 45785,
+            "y": 1120,
+            "z": 45856
+          },
+          "forward": {
+            "x": 0,
+            "y": 0,
+            "z": -1000
+          },
+          "hp": 6000,
+          "max_hp": 6000,
+          "values": {
+            "phy_atk": 9999,
+            "phy_def": 0,
+            "mgc_atk": 0,
+            "mgc_def": 0,
+            "mov_spd": 5000,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 0,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 13000,
+          "attack_target": 0,
+          "kill_income": 150,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8000,
+          "buff_state": {}
+        },
+        {
+          "config_id": 44,
+          "runtime_id": 15,
+          "actor_type": "ACTOR_ORGAN",
+          "sub_type": "ACTOR_SUB_TOWER_SPRING",
+          "camp": "PLAYERCAMP_1",
+          "behav_mode": "Attack_Move",
+          "location": {
+            "x": -45396,
+            "y": 1120,
+            "z": -45467
+          },
+          "forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1000
+          },
+          "hp": 6000,
+          "max_hp": 6000,
+          "values": {
+            "phy_atk": 9999,
+            "phy_def": 0,
+            "mgc_atk": 0,
+            "mgc_def": 0,
+            "mov_spd": 5000,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 0,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 13000,
+          "attack_target": 0,
+          "kill_income": 150,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8000,
+          "buff_state": {}
+        },
+        {
+          "config_id": 1114,
+          "runtime_id": 9,
+          "actor_type": "ACTOR_ORGAN",
+          "sub_type": "ACTOR_SUB_CRYSTAL",
+          "camp": "PLAYERCAMP_2",
+          "behav_mode": "Attack_Move",
+          "location": {
+            "x": 31250,
+            "y": 0,
+            "z": 31350
+          },
+          "forward": {
+            "x": 707,
+            "y": 0,
+            "z": -707
+          },
+          "hp": 9000,
+          "max_hp": 9000,
+          "values": {
+            "phy_atk": 550,
+            "phy_def": 200,
+            "mgc_atk": 0,
+            "mgc_def": 200,
+            "mov_spd": 5000,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 0,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 12000,
+          "attack_target": 0,
+          "kill_income": 0,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 9300,
+          "buff_state": {}
+        },
+        {
+          "config_id": 1113,
+          "runtime_id": 8,
+          "actor_type": "ACTOR_ORGAN",
+          "sub_type": "ACTOR_SUB_CRYSTAL",
+          "camp": "PLAYERCAMP_1",
+          "behav_mode": "Attack_Move",
+          "location": {
+            "x": -31310,
+            "y": 50,
+            "z": -31120
+          },
+          "forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1000
+          },
+          "hp": 9000,
+          "max_hp": 9000,
+          "values": {
+            "phy_atk": 550,
+            "phy_def": 200,
+            "mgc_atk": 0,
+            "mgc_def": 200,
+            "mov_spd": 5000,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 0,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 12000,
+          "attack_target": 0,
+          "kill_income": 0,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 9300,
+          "buff_state": {}
+        },
+        {
+          "config_id": 1112,
+          "runtime_id": 3,
+          "actor_type": "ACTOR_ORGAN",
+          "sub_type": "ACTOR_SUB_TOWER",
+          "camp": "PLAYERCAMP_2",
+          "behav_mode": "Attack_Move",
+          "location": {
+            "x": 13131,
+            "y": 0,
+            "z": 13258
+          },
+          "forward": {
+            "x": 707,
+            "y": 0,
+            "z": -707
+          },
+          "hp": 12000,
+          "max_hp": 12000,
+          "values": {
+            "phy_atk": 470,
+            "phy_def": 200,
+            "mgc_atk": 0,
+            "mgc_def": 200,
+            "mov_spd": 5000,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 0,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 8800,
+          "attack_target": 0,
+          "kill_income": 50,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8800,
+          "buff_state": {}
+        },
+        {
+          "config_id": 1111,
+          "runtime_id": 2,
+          "actor_type": "ACTOR_ORGAN",
+          "sub_type": "ACTOR_SUB_TOWER",
+          "camp": "PLAYERCAMP_1",
+          "behav_mode": "Attack_Move",
+          "location": {
+            "x": -13138,
+            "y": 0,
+            "z": -12940
+          },
+          "forward": {
+            "x": -707,
+            "y": 0,
+            "z": 707
+          },
+          "hp": 12000,
+          "max_hp": 12000,
+          "values": {
+            "phy_atk": 470,
+            "phy_def": 200,
+            "mgc_atk": 0,
+            "mgc_def": 200,
+            "mov_spd": 5000,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 0,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 8800,
+          "attack_target": 0,
+          "kill_income": 50,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8800,
+          "buff_state": {}
+        }
+      ],
+      "bullets": [
+        {
+          "runtime_id": 59,
+          "camp": "PLAYERCAMP_1",
+          "source_actor": 25,
+          "slot_type": "SLOT_SKILL_0",
+          "skill_id": 0,
+          "location": {
+            "x": -1753,
+            "y": 1008,
+            "z": -1351
+          }
+        },
+        {
+          "runtime_id": 60,
+          "camp": "PLAYERCAMP_2",
+          "source_actor": 26,
+          "slot_type": "SLOT_SKILL_0",
+          "skill_id": 0,
+          "location": {
+            "x": 1073,
+            "y": 996,
+            "z": 2848
+          }
+        },
+        {
+          "runtime_id": 62,
+          "camp": "PLAYERCAMP_2",
+          "source_actor": 24,
+          "slot_type": "SLOT_SKILL_0",
+          "skill_id": 0,
+          "location": {
+            "x": 2457,
+            "y": 238,
+            "z": 4693
+          }
+        }
+      ],
+      "frame_action": {},
+      "map_state": true
+    },
+    "win": 0
+  },
+  "1": {
+    "env_id": "80802699",
+    "player_id": 32,
+    "player_camp": 2,
+    "legal_action": "type=float64, shape=(184,)",
+    "sub_action_mask": "type=float64, shape=(12, 6)",
+    "frame_state": {
+      "frameNo": 1094,
+      "hero_states": [
+        {
+          "player_id": 31,
+          "actor_state": {
+            "config_id": 173,
+            "runtime_id": 7,
+            "actor_type": "ACTOR_HERO",
+            "sub_type": "ACTOR_SUB_NONE",
+            "camp": "PLAYERCAMP_1",
+            "behav_mode": "Normal_Attack",
+            "location": {
+              "x": -290,
+              "y": 48,
+              "z": 422
+            },
+            "forward": {
+              "x": 601,
+              "y": 0,
+              "z": -799
+            },
+            "hp": 2337,
+            "max_hp": 3007,
+            "values": {
+              "phy_atk": 190,
+              "phy_def": 87,
+              "mgc_atk": 0,
+              "mgc_def": 50,
+              "mov_spd": 4028,
+              "atk_spd": 4600,
+              "ep": 389,
+              "max_ep": 440,
+              "hp_recover": 37,
+              "ep_recover": 15,
+              "phy_armor_hurt": 100,
+              "mgc_armor_hurt": 0,
+              "crit_rate": 0,
+              "crit_effe": 10000,
+              "phy_vamp": 640,
+              "mgc_vamp": 0,
+              "cd_reduce": 0,
+              "ctrl_reduce": 0,
+              "monster_endurance": 0,
+              "organ_conti_attack": 0
+            },
+            "abilities": "type=bool, shape=(46,)",
+            "attack_range": 8000,
+            "attack_target": 0,
+            "kill_income": 150,
+            "camp_visible": "type=bool, shape=(2,)",
+            "sight_area": 7000,
+            "buff_state": {
+              "buff_skills": [
+                {
+                  "configId": 173040,
+                  "times": 0,
+                  "startTime": "66"
+                },
+                {
+                  "configId": 914110,
+                  "times": 0,
+                  "startTime": "2046"
+                },
+                {
+                  "configId": 173150,
+                  "times": 0,
+                  "startTime": "33363"
+                },
+                {
+                  "configId": 173160,
+                  "times": 0,
+                  "startTime": "33363"
+                },
+                {
+                  "configId": 173990,
+                  "times": 0,
+                  "startTime": "33363"
+                },
+                {
+                  "configId": 173999,
+                  "times": 0,
+                  "startTime": "33363"
+                },
+                {
+                  "configId": 173170,
+                  "times": 0,
+                  "startTime": "33363"
+                },
+                {
+                  "configId": 10000,
+                  "times": 0,
+                  "startTime": "35442"
+                }
+              ]
+            },
+            "hurt_hero_info": [
+              {
+                "hurt_target": 14,
+                "hurt": 570
+              }
+            ]
+          },
+          "skill_state": {
+            "slot_states": [
+              {
+                "configId": 17307,
+                "slot_type": "SLOT_SKILL_0",
+                "level": 0,
+                "usable": false,
+                "cooldown": 0,
+                "cooldown_max": 759,
+                "usedTimes": 3,
+                "hitHeroTimes": 3,
+                "succUsedInFrame": 0,
+                "nextConfigID": 17308,
+                "comboEffectTime": 3604
+              },
+              {
+                "configId": 17310,
+                "slot_type": "SLOT_SKILL_1",
+                "level": 0,
+                "usable": false,
+                "cooldown": 0,
+                "cooldown_max": 10000,
+                "usedTimes": 1,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 17320,
+                "slot_type": "SLOT_SKILL_2",
+                "level": 0,
+                "usable": false,
+                "cooldown": 0,
+                "cooldown_max": 11000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 17330,
+                "slot_type": "SLOT_SKILL_3",
+                "level": 0,
+                "usable": false,
+                "cooldown": 0,
+                "cooldown_max": 36000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 90003,
+                "slot_type": "SLOT_SKILL_4",
+                "level": 0,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 60000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 80115,
+                "slot_type": "SLOT_SKILL_5",
+                "level": 0,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 120000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 90005,
+                "slot_type": "SLOT_SKILL_6",
+                "level": 0,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 0,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              }
+            ]
+          },
+          "equip_state": {
+            "equips": [
+              {
+                "configId": 1411,
+                "amount": 1,
+                "buyPrice": 250
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              }
+            ]
+          },
+          "buff_state": {
+            "buff_skills": [
+              {
+                "configId": 173040,
+                "times": 0,
+                "startTime": "66"
+              },
+              {
+                "configId": 914110,
+                "times": 0,
+                "startTime": "2046"
+              },
+              {
+                "configId": 173150,
+                "times": 0,
+                "startTime": "33363"
+              },
+              {
+                "configId": 173160,
+                "times": 0,
+                "startTime": "33363"
+              },
+              {
+                "configId": 173990,
+                "times": 0,
+                "startTime": "33363"
+              },
+              {
+                "configId": 173999,
+                "times": 0,
+                "startTime": "33363"
+              },
+              {
+                "configId": 173170,
+                "times": 0,
+                "startTime": "33363"
+              },
+              {
+                "configId": 10000,
+                "times": 0,
+                "startTime": "35442"
+              }
+            ]
+          },
+          "level": 1,
+          "exp": 72,
+          "money": 194,
+          "revive_time": 0,
+          "killCnt": 0,
+          "deadCnt": 0,
+          "assistCnt": 0,
+          "moneyCnt": 444,
+          "totalHurt": 570,
+          "totalHurtToHero": 570,
+          "totalBeHurtByHero": 0,
+          "passive_skill": [
+            {
+              "passive_skillid": 17300,
+              "cooldown": 0
+            },
+            {
+              "passive_skillid": 17301,
+              "cooldown": 0
+            }
+          ],
+          "real_cmd": [
+            {
+              "command_type": "COMMAND_TYPE_AttackCommon",
+              "move_pos": {
+                "destPos": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "move_dir": {
+                "degree": 0
+              },
+              "attack_common": {
+                "actorID": 0,
+                "start": 0
+              },
+              "attack_topos": {
+                "destPos": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "attack_actor": {
+                "actorID": 0
+              },
+              "obj_skill": {
+                "skillID": 0,
+                "actorID": 0,
+                "slotType": "SLOT_SKILL_0"
+              },
+              "dir_skill": {
+                "skillID": 0,
+                "actorID": 0,
+                "slotType": "SLOT_SKILL_0",
+                "degree": 0
+              },
+              "pos_skill": {
+                "skillID": 0,
+                "destPos": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "slotType": "SLOT_SKILL_0"
+              },
+              "learn_skill": {
+                "slotType": "SLOT_SKILL_0",
+                "level": 0
+              },
+              "buy_equip": {
+                "equipId": 0,
+                "obj_id": 0
+              },
+              "sell_equip": {
+                "equipIndex": 0
+              },
+              "charge_skill": {
+                "slotType": "SLOT_SKILL_0",
+                "state": 0,
+                "degree": 0
+              }
+            }
+          ],
+          "canAbortCurSkill": "type=bool, shape=(16,)",
+          "isInGrass": false,
+          "canBuyEquip": false
+        },
+        {
+          "player_id": 32,
+          "actor_state": {
+            "config_id": 173,
+            "runtime_id": 14,
+            "actor_type": "ACTOR_HERO",
+            "sub_type": "ACTOR_SUB_NONE",
+            "camp": "PLAYERCAMP_2",
+            "behav_mode": "Direction_Move",
+            "location": {
+              "x": -666,
+              "y": 48,
+              "z": -49
+            },
+            "forward": {
+              "x": 277,
+              "y": 0,
+              "z": 961
+            },
+            "hp": 1939,
+            "max_hp": 3007,
+            "values": {
+              "phy_atk": 190,
+              "phy_def": 87,
+              "mgc_atk": 0,
+              "mgc_def": 50,
+              "mov_spd": 4028,
+              "atk_spd": 600,
+              "ep": 440,
+              "max_ep": 440,
+              "hp_recover": 37,
+              "ep_recover": 15,
+              "phy_armor_hurt": 100,
+              "mgc_armor_hurt": 0,
+              "crit_rate": 0,
+              "crit_effe": 10000,
+              "phy_vamp": 640,
+              "mgc_vamp": 0,
+              "cd_reduce": 0,
+              "ctrl_reduce": 0,
+              "monster_endurance": 0,
+              "organ_conti_attack": 0
+            },
+            "abilities": "type=bool, shape=(46,)",
+            "attack_range": 7000,
+            "attack_target": 0,
+            "kill_income": 150,
+            "camp_visible": "type=bool, shape=(2,)",
+            "sight_area": 7000,
+            "buff_state": {
+              "buff_skills": [
+                {
+                  "configId": 173040,
+                  "times": 0,
+                  "startTime": "66"
+                },
+                {
+                  "configId": 914110,
+                  "times": 0,
+                  "startTime": "2046"
+                },
+                {
+                  "configId": 173101,
+                  "times": 0,
+                  "startTime": "33594"
+                },
+                {
+                  "configId": 173120,
+                  "times": 0,
+                  "startTime": "33594"
+                },
+                {
+                  "configId": 10000,
+                  "times": 0,
+                  "startTime": "35475"
+                },
+                {
+                  "configId": 173000,
+                  "times": 0,
+                  "startTime": "35838"
+                },
+                {
+                  "configId": 173151,
+                  "times": 0,
+                  "startTime": "35871"
+                }
+              ],
+              "buff_marks": [
+                {
+                  "configId": 17300,
+                  "layer": 4,
+                  "origin_actorId": 7
+                },
+                {
+                  "configId": 17310,
+                  "layer": 1,
+                  "origin_actorId": 7
+                }
+              ]
+            }
+          },
+          "skill_state": {
+            "slot_states": [
+              {
+                "configId": 17300,
+                "slot_type": "SLOT_SKILL_0",
+                "level": 1,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 1023,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 17310,
+                "slot_type": "SLOT_SKILL_1",
+                "level": 1,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 10000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 17320,
+                "slot_type": "SLOT_SKILL_2",
+                "level": 0,
+                "usable": false,
+                "cooldown": 0,
+                "cooldown_max": 11000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 17330,
+                "slot_type": "SLOT_SKILL_3",
+                "level": 0,
+                "usable": false,
+                "cooldown": 0,
+                "cooldown_max": 36000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 90003,
+                "slot_type": "SLOT_SKILL_4",
+                "level": 1,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 60000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 80115,
+                "slot_type": "SLOT_SKILL_5",
+                "level": 1,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 120000,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              },
+              {
+                "configId": 90005,
+                "slot_type": "SLOT_SKILL_6",
+                "level": 1,
+                "usable": true,
+                "cooldown": 0,
+                "cooldown_max": 0,
+                "usedTimes": 0,
+                "hitHeroTimes": 0,
+                "succUsedInFrame": 0,
+                "nextConfigID": 0,
+                "comboEffectTime": 0
+              }
+            ]
+          },
+          "equip_state": {
+            "equips": [
+              {
+                "configId": 1411,
+                "amount": 1,
+                "buyPrice": 250
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              },
+              {
+                "configId": 0,
+                "amount": 0,
+                "buyPrice": 0
+              }
+            ]
+          },
+          "buff_state": {
+            "buff_skills": [
+              {
+                "configId": 173040,
+                "times": 0,
+                "startTime": "66"
+              },
+              {
+                "configId": 914110,
+                "times": 0,
+                "startTime": "2046"
+              },
+              {
+                "configId": 173101,
+                "times": 0,
+                "startTime": "33594"
+              },
+              {
+                "configId": 173120,
+                "times": 0,
+                "startTime": "33594"
+              },
+              {
+                "configId": 10000,
+                "times": 0,
+                "startTime": "35475"
+              },
+              {
+                "configId": 173000,
+                "times": 0,
+                "startTime": "35838"
+              },
+              {
+                "configId": 173151,
+                "times": 0,
+                "startTime": "35871"
+              }
+            ],
+            "buff_marks": [
+              {
+                "configId": 17300,
+                "layer": 4,
+                "origin_actorId": 7
+              },
+              {
+                "configId": 17310,
+                "layer": 1,
+                "origin_actorId": 7
+              }
+            ]
+          },
+          "level": 1,
+          "exp": 72,
+          "money": 194,
+          "revive_time": 0,
+          "killCnt": 0,
+          "deadCnt": 0,
+          "assistCnt": 0,
+          "moneyCnt": 444,
+          "totalHurt": 0,
+          "totalHurtToHero": 0,
+          "totalBeHurtByHero": 570,
+          "passive_skill": [
+            {
+              "passive_skillid": 17300,
+              "cooldown": 0
+            },
+            {
+              "passive_skillid": 17301,
+              "cooldown": 0
+            }
+          ],
+          "real_cmd": [
+            {
+              "command_type": "COMMAND_TYPE_MoveDir",
+              "move_pos": {
+                "destPos": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "move_dir": {
+                "degree": -73
+              },
+              "attack_common": {
+                "actorID": 0,
+                "start": 0
+              },
+              "attack_topos": {
+                "destPos": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "attack_actor": {
+                "actorID": 0
+              },
+              "obj_skill": {
+                "skillID": 0,
+                "actorID": 0,
+                "slotType": "SLOT_SKILL_0"
+              },
+              "dir_skill": {
+                "skillID": 0,
+                "actorID": 0,
+                "slotType": "SLOT_SKILL_0",
+                "degree": 0
+              },
+              "pos_skill": {
+                "skillID": 0,
+                "destPos": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "slotType": "SLOT_SKILL_0"
+              },
+              "learn_skill": {
+                "slotType": "SLOT_SKILL_0",
+                "level": 0
+              },
+              "buy_equip": {
+                "equipId": 0,
+                "obj_id": 0
+              },
+              "sell_equip": {
+                "equipIndex": 0
+              },
+              "charge_skill": {
+                "slotType": "SLOT_SKILL_0",
+                "state": 0,
+                "degree": 0
+              }
+            }
+          ],
+          "isInGrass": false,
+          "canBuyEquip": false
+        }
+      ],
+      "npc_states": [
+        {
+          "config_id": 6804,
+          "runtime_id": 26,
+          "actor_type": "ACTOR_MONSTER",
+          "sub_type": "ACTOR_SUB_SOLDIER",
+          "camp": "PLAYERCAMP_2",
+          "behav_mode": "Attack_Path",
+          "location": {
+            "x": 2803,
+            "y": 48,
+            "z": 5862
+          },
+          "forward": {
+            "x": -450,
+            "y": 0,
+            "z": -893
+          },
+          "hp": 1356,
+          "max_hp": 1356,
+          "values": {
+            "phy_atk": 90,
+            "phy_def": 180,
+            "mgc_atk": 90,
+            "mgc_def": 0,
+            "mov_spd": 3088,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 750,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 7000,
+          "attack_target": 21,
+          "kill_income": 46,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8500,
+          "buff_state": {}
+        },
+        {
+          "config_id": 6801,
+          "runtime_id": 25,
+          "actor_type": "ACTOR_MONSTER",
+          "sub_type": "ACTOR_SUB_SOLDIER",
+          "camp": "PLAYERCAMP_1",
+          "behav_mode": "Attack_Path",
+          "location": {
+            "x": -4927,
+            "y": 48,
+            "z": -4185
+          },
+          "forward": {
+            "x": 723,
+            "y": 0,
+            "z": 691
+          },
+          "hp": 1356,
+          "max_hp": 1356,
+          "values": {
+            "phy_atk": 90,
+            "phy_def": 180,
+            "mgc_atk": 90,
+            "mgc_def": 0,
+            "mov_spd": 3088,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 750,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 7000,
+          "attack_target": 22,
+          "kill_income": 46,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8500,
+          "buff_state": {}
+        },
+        {
+          "config_id": 6804,
+          "runtime_id": 24,
+          "actor_type": "ACTOR_MONSTER",
+          "sub_type": "ACTOR_SUB_SOLDIER",
+          "camp": "PLAYERCAMP_2",
+          "behav_mode": "Attack_Path",
+          "location": {
+            "x": 3626,
+            "y": 48,
+            "z": 5475
+          },
+          "forward": {
+            "x": -559,
+            "y": 0,
+            "z": -829
+          },
+          "hp": 1356,
+          "max_hp": 1356,
+          "values": {
+            "phy_atk": 90,
+            "phy_def": 180,
+            "mgc_atk": 90,
+            "mgc_def": 0,
+            "mov_spd": 3088,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 750,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 7000,
+          "attack_target": 21,
+          "kill_income": 46,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8500,
+          "buff_state": {}
+        },
+        {
+          "config_id": 6801,
+          "runtime_id": 23,
+          "actor_type": "ACTOR_MONSTER",
+          "sub_type": "ACTOR_SUB_SOLDIER",
+          "camp": "PLAYERCAMP_1",
+          "behav_mode": "Attack_Path",
+          "location": {
+            "x": -4100,
+            "y": 48,
+            "z": -4617
+          },
+          "forward": {
+            "x": 628,
+            "y": 0,
+            "z": 778
+          },
+          "hp": 1356,
+          "max_hp": 1356,
+          "values": {
+            "phy_atk": 90,
+            "phy_def": 180,
+            "mgc_atk": 90,
+            "mgc_def": 0,
+            "mov_spd": 3088,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 750,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 7000,
+          "attack_target": 22,
+          "kill_income": 46,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8500,
+          "buff_state": {}
+        },
+        {
+          "config_id": 6803,
+          "runtime_id": 22,
+          "actor_type": "ACTOR_MONSTER",
+          "sub_type": "ACTOR_SUB_SOLDIER",
+          "camp": "PLAYERCAMP_2",
+          "behav_mode": "Attack_Path",
+          "location": {
+            "x": 231,
+            "y": 48,
+            "z": 748
+          },
+          "forward": {
+            "x": -453,
+            "y": 0,
+            "z": -892
+          },
+          "hp": 729,
+          "max_hp": 1488,
+          "values": {
+            "phy_atk": 60,
+            "phy_def": 180,
+            "mgc_atk": 60,
+            "mgc_def": 0,
+            "mov_spd": 3088,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 750,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 1500,
+          "attack_target": 21,
+          "kill_income": 75,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 5500,
+          "buff_state": {}
+        },
+        {
+          "config_id": 6800,
+          "runtime_id": 21,
+          "actor_type": "ACTOR_MONSTER",
+          "sub_type": "ACTOR_SUB_SOLDIER",
+          "camp": "PLAYERCAMP_1",
+          "behav_mode": "Attack_Path",
+          "location": {
+            "x": -413,
+            "y": 48,
+            "z": -521
+          },
+          "forward": {
+            "x": 453,
+            "y": 0,
+            "z": 892
+          },
+          "hp": 913,
+          "max_hp": 1488,
+          "values": {
+            "phy_atk": 60,
+            "phy_def": 180,
+            "mgc_atk": 60,
+            "mgc_def": 0,
+            "mov_spd": 3088,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 750,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 1500,
+          "attack_target": 22,
+          "kill_income": 75,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 5500,
+          "buff_state": {}
+        },
+        {
+          "config_id": 46,
+          "runtime_id": 16,
+          "actor_type": "ACTOR_ORGAN",
+          "sub_type": "ACTOR_SUB_TOWER_SPRING",
+          "camp": "PLAYERCAMP_2",
+          "behav_mode": "Attack_Move",
+          "location": {
+            "x": 45785,
+            "y": 1120,
+            "z": 45856
+          },
+          "forward": {
+            "x": 0,
+            "y": 0,
+            "z": -1000
+          },
+          "hp": 6000,
+          "max_hp": 6000,
+          "values": {
+            "phy_atk": 9999,
+            "phy_def": 0,
+            "mgc_atk": 0,
+            "mgc_def": 0,
+            "mov_spd": 5000,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 0,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 13000,
+          "attack_target": 0,
+          "kill_income": 150,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8000,
+          "buff_state": {}
+        },
+        {
+          "config_id": 44,
+          "runtime_id": 15,
+          "actor_type": "ACTOR_ORGAN",
+          "sub_type": "ACTOR_SUB_TOWER_SPRING",
+          "camp": "PLAYERCAMP_1",
+          "behav_mode": "Attack_Move",
+          "location": {
+            "x": -45396,
+            "y": 1120,
+            "z": -45467
+          },
+          "forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1000
+          },
+          "hp": 6000,
+          "max_hp": 6000,
+          "values": {
+            "phy_atk": 9999,
+            "phy_def": 0,
+            "mgc_atk": 0,
+            "mgc_def": 0,
+            "mov_spd": 5000,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 0,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 13000,
+          "attack_target": 0,
+          "kill_income": 150,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8000,
+          "buff_state": {}
+        },
+        {
+          "config_id": 1114,
+          "runtime_id": 9,
+          "actor_type": "ACTOR_ORGAN",
+          "sub_type": "ACTOR_SUB_CRYSTAL",
+          "camp": "PLAYERCAMP_2",
+          "behav_mode": "Attack_Move",
+          "location": {
+            "x": 31250,
+            "y": 0,
+            "z": 31350
+          },
+          "forward": {
+            "x": 707,
+            "y": 0,
+            "z": -707
+          },
+          "hp": 9000,
+          "max_hp": 9000,
+          "values": {
+            "phy_atk": 550,
+            "phy_def": 200,
+            "mgc_atk": 0,
+            "mgc_def": 200,
+            "mov_spd": 5000,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 0,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 12000,
+          "attack_target": 0,
+          "kill_income": 0,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 9300,
+          "buff_state": {}
+        },
+        {
+          "config_id": 1113,
+          "runtime_id": 8,
+          "actor_type": "ACTOR_ORGAN",
+          "sub_type": "ACTOR_SUB_CRYSTAL",
+          "camp": "PLAYERCAMP_1",
+          "behav_mode": "Attack_Move",
+          "location": {
+            "x": -31310,
+            "y": 50,
+            "z": -31120
+          },
+          "forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1000
+          },
+          "hp": 9000,
+          "max_hp": 9000,
+          "values": {
+            "phy_atk": 550,
+            "phy_def": 200,
+            "mgc_atk": 0,
+            "mgc_def": 200,
+            "mov_spd": 5000,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 0,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 12000,
+          "attack_target": 0,
+          "kill_income": 0,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 9300,
+          "buff_state": {}
+        },
+        {
+          "config_id": 1112,
+          "runtime_id": 3,
+          "actor_type": "ACTOR_ORGAN",
+          "sub_type": "ACTOR_SUB_TOWER",
+          "camp": "PLAYERCAMP_2",
+          "behav_mode": "Attack_Move",
+          "location": {
+            "x": 13131,
+            "y": 0,
+            "z": 13258
+          },
+          "forward": {
+            "x": 707,
+            "y": 0,
+            "z": -707
+          },
+          "hp": 12000,
+          "max_hp": 12000,
+          "values": {
+            "phy_atk": 470,
+            "phy_def": 200,
+            "mgc_atk": 0,
+            "mgc_def": 200,
+            "mov_spd": 5000,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 0,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 8800,
+          "attack_target": 0,
+          "kill_income": 50,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8800,
+          "buff_state": {}
+        },
+        {
+          "config_id": 1111,
+          "runtime_id": 2,
+          "actor_type": "ACTOR_ORGAN",
+          "sub_type": "ACTOR_SUB_TOWER",
+          "camp": "PLAYERCAMP_1",
+          "behav_mode": "Attack_Move",
+          "location": {
+            "x": -13138,
+            "y": 0,
+            "z": -12940
+          },
+          "forward": {
+            "x": -707,
+            "y": 0,
+            "z": 707
+          },
+          "hp": 12000,
+          "max_hp": 12000,
+          "values": {
+            "phy_atk": 470,
+            "phy_def": 200,
+            "mgc_atk": 0,
+            "mgc_def": 200,
+            "mov_spd": 5000,
+            "atk_spd": 0,
+            "ep": 0,
+            "max_ep": 0,
+            "hp_recover": 0,
+            "ep_recover": 0,
+            "phy_armor_hurt": 0,
+            "mgc_armor_hurt": 0,
+            "crit_rate": 0,
+            "crit_effe": 0,
+            "phy_vamp": 0,
+            "mgc_vamp": 0,
+            "cd_reduce": 0,
+            "ctrl_reduce": 0,
+            "monster_endurance": 0,
+            "organ_conti_attack": 0
+          },
+          "abilities": "type=bool, shape=(46,)",
+          "attack_range": 8800,
+          "attack_target": 0,
+          "kill_income": 50,
+          "camp_visible": "type=bool, shape=(2,)",
+          "sight_area": 8800,
+          "buff_state": {}
+        }
+      ],
+      "bullets": [
+        {
+          "runtime_id": 59,
+          "camp": "PLAYERCAMP_1",
+          "source_actor": 25,
+          "slot_type": "SLOT_SKILL_0",
+          "skill_id": 0,
+          "location": {
+            "x": -1753,
+            "y": 1008,
+            "z": -1351
+          }
+        },
+        {
+          "runtime_id": 60,
+          "camp": "PLAYERCAMP_2",
+          "source_actor": 26,
+          "slot_type": "SLOT_SKILL_0",
+          "skill_id": 0,
+          "location": {
+            "x": 1073,
+            "y": 996,
+            "z": 2848
+          }
+        },
+        {
+          "runtime_id": 62,
+          "camp": "PLAYERCAMP_2",
+          "source_actor": 24,
+          "slot_type": "SLOT_SKILL_0",
+          "skill_id": 0,
+          "location": {
+            "x": 2457,
+            "y": 238,
+            "z": 4693
+          }
+        }
+      ],
+      "frame_action": {},
+      "map_state": true
+    },
+    "win": 0
+  }
+}
