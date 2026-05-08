@@ -1,0 +1,1319 @@
+{
+  "type": "dict",
+  "keys": [
+    "episode",
+    "agent_idx",
+    "frame_no",
+    "state_frame_no",
+    "dump_target_frames",
+    "usr_conf",
+    "extra_info",
+    "env_meta",
+    "observation"
+  ],
+  "fields": {
+    "episode": {
+      "type": "int"
+    },
+    "agent_idx": {
+      "type": "int"
+    },
+    "frame_no": {
+      "type": "int"
+    },
+    "state_frame_no": {
+      "type": "int"
+    },
+    "dump_target_frames": {
+      "type": "list",
+      "len": 1,
+      "item": {
+        "type": "int"
+      }
+    },
+    "usr_conf": {
+      "type": "dict",
+      "keys": [
+        "monitor",
+        "episode",
+        "lineups"
+      ],
+      "fields": {
+        "monitor": {
+          "type": "dict",
+          "keys": [
+            "monitor_side",
+            "auto_switch_monitor_side"
+          ],
+          "fields": {
+            "monitor_side": {
+              "type": "int"
+            },
+            "auto_switch_monitor_side": {
+              "type": "bool"
+            }
+          }
+        },
+        "episode": {
+          "type": "dict",
+          "keys": [
+            "opponent_agent",
+            "eval_interval",
+            "eval_opponent_type"
+          ],
+          "fields": {
+            "opponent_agent": {
+              "type": "str"
+            },
+            "eval_interval": {
+              "type": "int"
+            },
+            "eval_opponent_type": {
+              "type": "str"
+            }
+          }
+        },
+        "lineups": {
+          "type": "dict",
+          "keys": [
+            "blue_camp",
+            "red_camp"
+          ],
+          "fields": {
+            "blue_camp": {
+              "type": "list",
+              "len": 1,
+              "item": {
+                "type": "dict",
+                "keys": [
+                  "hero_id",
+                  "select_skill"
+                ],
+                "fields": {
+                  "hero_id": {
+                    "type": "int"
+                  },
+                  "select_skill": {
+                    "type": "int"
+                  }
+                }
+              }
+            },
+            "red_camp": {
+              "type": "list",
+              "len": 1,
+              "item": {
+                "type": "dict",
+                "keys": [
+                  "hero_id",
+                  "select_skill"
+                ],
+                "fields": {
+                  "hero_id": {
+                    "type": "int"
+                  },
+                  "select_skill": {
+                    "type": "int"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "extra_info": {
+      "type": "dict",
+      "keys": [
+        "result_code",
+        "result_message"
+      ],
+      "fields": {
+        "result_code": {
+          "type": "int"
+        },
+        "result_message": {
+          "type": "str"
+        }
+      }
+    },
+    "env_meta": {
+      "type": "dict",
+      "keys": [
+        "phase"
+      ],
+      "fields": {
+        "phase": {
+          "type": "str"
+        }
+      }
+    },
+    "observation": {
+      "type": "dict",
+      "keys": [
+        "player_id",
+        "camp",
+        "feature",
+        "legal_action",
+        "sub_action_mask",
+        "score",
+        "frame_state"
+      ],
+      "fields": {
+        "player_id": {
+          "type": "int"
+        },
+        "camp": {
+          "type": "int"
+        },
+        "feature": {
+          "type": "list",
+          "len": 0,
+          "item": {
+            "type": "empty"
+          }
+        },
+        "legal_action": {
+          "type": "list",
+          "len": 184,
+          "item": {
+            "type": "float"
+          }
+        },
+        "sub_action_mask": {
+          "type": "dict",
+          "keys": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11"
+          ],
+          "fields": {
+            "0": {
+              "type": "list",
+              "len": 6,
+              "item": {
+                "type": "float"
+              }
+            },
+            "1": {
+              "type": "list",
+              "len": 6,
+              "item": {
+                "type": "float"
+              }
+            },
+            "2": {
+              "type": "list",
+              "len": 6,
+              "item": {
+                "type": "float"
+              }
+            },
+            "3": {
+              "type": "list",
+              "len": 6,
+              "item": {
+                "type": "float"
+              }
+            },
+            "4": {
+              "type": "list",
+              "len": 6,
+              "item": {
+                "type": "float"
+              }
+            },
+            "5": {
+              "type": "list",
+              "len": 6,
+              "item": {
+                "type": "float"
+              }
+            },
+            "6": {
+              "type": "list",
+              "len": 6,
+              "item": {
+                "type": "float"
+              }
+            },
+            "7": {
+              "type": "list",
+              "len": 6,
+              "item": {
+                "type": "float"
+              }
+            },
+            "8": {
+              "type": "list",
+              "len": 6,
+              "item": {
+                "type": "float"
+              }
+            },
+            "9": {
+              "type": "list",
+              "len": 6,
+              "item": {
+                "type": "float"
+              }
+            },
+            "10": {
+              "type": "list",
+              "len": 6,
+              "item": {
+                "type": "float"
+              }
+            },
+            "11": {
+              "type": "list",
+              "len": 6,
+              "item": {
+                "type": "float"
+              }
+            }
+          }
+        },
+        "score": {
+          "type": "list",
+          "len": 1,
+          "item": {
+            "type": "int"
+          }
+        },
+        "frame_state": {
+          "type": "dict",
+          "keys": [
+            "frame_no",
+            "hero_states",
+            "npc_states",
+            "bullets",
+            "cakes",
+            "frame_action",
+            "map_state"
+          ],
+          "fields": {
+            "frame_no": {
+              "type": "int"
+            },
+            "hero_states": {
+              "type": "list",
+              "len": 2,
+              "item": {
+                "type": "dict",
+                "keys": [
+                  "player_id",
+                  "config_id",
+                  "runtime_id",
+                  "actor_type",
+                  "sub_type",
+                  "camp",
+                  "behav_mode",
+                  "location",
+                  "forward",
+                  "hp",
+                  "max_hp",
+                  "abilities",
+                  "attack_range",
+                  "attack_target",
+                  "kill_income",
+                  "hit_target_info",
+                  "camp_visible",
+                  "sight_area",
+                  "phy_atk",
+                  "phy_def",
+                  "mgc_atk",
+                  "mgc_def",
+                  "mov_spd",
+                  "atk_spd",
+                  "ep",
+                  "max_ep",
+                  "hp_recover",
+                  "ep_recover",
+                  "phy_armor_hurt",
+                  "mgc_armor_hurt",
+                  "crit_rate",
+                  "crit_effe",
+                  "phy_vamp",
+                  "mgc_vamp",
+                  "cd_reduce",
+                  "ctrl_reduce",
+                  "skill_state",
+                  "equip_state",
+                  "buff_state",
+                  "level",
+                  "exp",
+                  "money",
+                  "revive_time",
+                  "kill_cnt",
+                  "dead_cnt",
+                  "assist_cnt",
+                  "money_cnt",
+                  "total_hurt",
+                  "total_hurt_to_hero",
+                  "total_be_hurt_by_hero",
+                  "passive_skill",
+                  "real_cmd",
+                  "is_in_grass",
+                  "take_hurt_infos"
+                ],
+                "fields": {
+                  "player_id": {
+                    "type": "int"
+                  },
+                  "config_id": {
+                    "type": "int"
+                  },
+                  "runtime_id": {
+                    "type": "int"
+                  },
+                  "actor_type": {
+                    "type": "int"
+                  },
+                  "sub_type": {
+                    "type": "int"
+                  },
+                  "camp": {
+                    "type": "int"
+                  },
+                  "behav_mode": {
+                    "type": "int"
+                  },
+                  "location": {
+                    "type": "dict",
+                    "keys": [
+                      "x",
+                      "y",
+                      "z"
+                    ],
+                    "fields": {
+                      "x": {
+                        "type": "int"
+                      },
+                      "y": {
+                        "type": "int"
+                      },
+                      "z": {
+                        "type": "int"
+                      }
+                    }
+                  },
+                  "forward": {
+                    "type": "dict",
+                    "keys": [
+                      "x",
+                      "y",
+                      "z"
+                    ],
+                    "fields": {
+                      "x": {
+                        "type": "int"
+                      },
+                      "y": {
+                        "type": "int"
+                      },
+                      "z": {
+                        "type": "int"
+                      }
+                    }
+                  },
+                  "hp": {
+                    "type": "int"
+                  },
+                  "max_hp": {
+                    "type": "int"
+                  },
+                  "abilities": {
+                    "type": "list",
+                    "len": 46,
+                    "item": {
+                      "type": "bool"
+                    }
+                  },
+                  "attack_range": {
+                    "type": "int"
+                  },
+                  "attack_target": {
+                    "type": "int"
+                  },
+                  "kill_income": {
+                    "type": "int"
+                  },
+                  "hit_target_info": {
+                    "type": "list",
+                    "len": 6,
+                    "item": {
+                      "type": "dict",
+                      "keys": [
+                        "hit_target",
+                        "skill_id",
+                        "slot_type",
+                        "conti_hit_count"
+                      ],
+                      "fields": {
+                        "hit_target": {
+                          "type": "int"
+                        },
+                        "skill_id": {
+                          "type": "int"
+                        },
+                        "slot_type": {
+                          "type": "int"
+                        },
+                        "conti_hit_count": {
+                          "type": "int"
+                        }
+                      }
+                    }
+                  },
+                  "camp_visible": {
+                    "type": "list",
+                    "len": 2,
+                    "item": {
+                      "type": "bool"
+                    }
+                  },
+                  "sight_area": {
+                    "type": "int"
+                  },
+                  "phy_atk": {
+                    "type": "int"
+                  },
+                  "phy_def": {
+                    "type": "int"
+                  },
+                  "mgc_atk": {
+                    "type": "int"
+                  },
+                  "mgc_def": {
+                    "type": "int"
+                  },
+                  "mov_spd": {
+                    "type": "int"
+                  },
+                  "atk_spd": {
+                    "type": "int"
+                  },
+                  "ep": {
+                    "type": "int"
+                  },
+                  "max_ep": {
+                    "type": "int"
+                  },
+                  "hp_recover": {
+                    "type": "int"
+                  },
+                  "ep_recover": {
+                    "type": "int"
+                  },
+                  "phy_armor_hurt": {
+                    "type": "int"
+                  },
+                  "mgc_armor_hurt": {
+                    "type": "int"
+                  },
+                  "crit_rate": {
+                    "type": "int"
+                  },
+                  "crit_effe": {
+                    "type": "int"
+                  },
+                  "phy_vamp": {
+                    "type": "int"
+                  },
+                  "mgc_vamp": {
+                    "type": "int"
+                  },
+                  "cd_reduce": {
+                    "type": "int"
+                  },
+                  "ctrl_reduce": {
+                    "type": "int"
+                  },
+                  "skill_state": {
+                    "type": "dict",
+                    "keys": [
+                      "slot_states"
+                    ],
+                    "fields": {
+                      "slot_states": {
+                        "type": "list",
+                        "len": 7,
+                        "item": {
+                          "type": "dict",
+                          "keys": [
+                            "configId",
+                            "slot_type",
+                            "level",
+                            "usable",
+                            "cooldown",
+                            "cooldown_max",
+                            "usedTimes",
+                            "hitHeroTimes",
+                            "succUsedInFrame",
+                            "nextConfigID",
+                            "comboEffectTime"
+                          ],
+                          "fields": {
+                            "configId": {
+                              "type": "int"
+                            },
+                            "slot_type": {
+                              "type": "int"
+                            },
+                            "level": {
+                              "type": "int"
+                            },
+                            "usable": {
+                              "type": "bool"
+                            },
+                            "cooldown": {
+                              "type": "int"
+                            },
+                            "cooldown_max": {
+                              "type": "int"
+                            },
+                            "usedTimes": {
+                              "type": "int"
+                            },
+                            "hitHeroTimes": {
+                              "type": "int"
+                            },
+                            "succUsedInFrame": {
+                              "type": "int"
+                            },
+                            "nextConfigID": {
+                              "type": "int"
+                            },
+                            "comboEffectTime": {
+                              "type": "int"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "equip_state": {
+                    "type": "dict",
+                    "keys": [
+                      "equips"
+                    ],
+                    "fields": {
+                      "equips": {
+                        "type": "list",
+                        "len": 6,
+                        "item": {
+                          "type": "dict",
+                          "keys": [
+                            "configId",
+                            "buyPrice",
+                            "amount",
+                            "active_skill",
+                            "passive_skill"
+                          ],
+                          "fields": {
+                            "configId": {
+                              "type": "int"
+                            },
+                            "buyPrice": {
+                              "type": "int"
+                            },
+                            "amount": {
+                              "type": "int"
+                            },
+                            "active_skill": {
+                              "type": "list",
+                              "len": 0,
+                              "item": {
+                                "type": "empty"
+                              }
+                            },
+                            "passive_skill": {
+                              "type": "list",
+                              "len": 0,
+                              "item": {
+                                "type": "empty"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "buff_state": {
+                    "type": "dict",
+                    "keys": [
+                      "buff_skills",
+                      "buff_marks"
+                    ],
+                    "fields": {
+                      "buff_skills": {
+                        "type": "list",
+                        "len": 4,
+                        "item": {
+                          "type": "dict",
+                          "keys": [
+                            "configId",
+                            "times",
+                            "startTime"
+                          ],
+                          "fields": {
+                            "configId": {
+                              "type": "int"
+                            },
+                            "times": {
+                              "type": "int"
+                            },
+                            "startTime": {
+                              "type": "int"
+                            }
+                          }
+                        }
+                      },
+                      "buff_marks": {
+                        "type": "list",
+                        "len": 0,
+                        "item": {
+                          "type": "empty"
+                        }
+                      }
+                    }
+                  },
+                  "level": {
+                    "type": "int"
+                  },
+                  "exp": {
+                    "type": "int"
+                  },
+                  "money": {
+                    "type": "int"
+                  },
+                  "revive_time": {
+                    "type": "int"
+                  },
+                  "kill_cnt": {
+                    "type": "int"
+                  },
+                  "dead_cnt": {
+                    "type": "int"
+                  },
+                  "assist_cnt": {
+                    "type": "int"
+                  },
+                  "money_cnt": {
+                    "type": "int"
+                  },
+                  "total_hurt": {
+                    "type": "int"
+                  },
+                  "total_hurt_to_hero": {
+                    "type": "int"
+                  },
+                  "total_be_hurt_by_hero": {
+                    "type": "int"
+                  },
+                  "passive_skill": {
+                    "type": "list",
+                    "len": 1,
+                    "item": {
+                      "type": "dict",
+                      "keys": [
+                        "passive_skillid",
+                        "cooldown"
+                      ],
+                      "fields": {
+                        "passive_skillid": {
+                          "type": "int"
+                        },
+                        "cooldown": {
+                          "type": "int"
+                        }
+                      }
+                    }
+                  },
+                  "real_cmd": {
+                    "type": "list",
+                    "len": 1,
+                    "item": {
+                      "type": "dict",
+                      "keys": [
+                        "command_type",
+                        "move_pos",
+                        "move_dir",
+                        "attack_common",
+                        "attack_topos",
+                        "attack_actor",
+                        "obj_skill",
+                        "dir_skill",
+                        "pos_skill",
+                        "learn_skill",
+                        "buy_equip",
+                        "sell_equip",
+                        "charge_skill"
+                      ],
+                      "fields": {
+                        "command_type": {
+                          "type": "int"
+                        },
+                        "move_pos": {
+                          "type": "dict",
+                          "keys": [
+                            "destPos"
+                          ],
+                          "fields": {
+                            "destPos": {
+                              "type": "dict",
+                              "keys": [
+                                "x",
+                                "y",
+                                "z"
+                              ],
+                              "fields": {
+                                "x": {
+                                  "type": "max_depth"
+                                },
+                                "y": {
+                                  "type": "max_depth"
+                                },
+                                "z": {
+                                  "type": "max_depth"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "move_dir": {
+                          "type": "dict",
+                          "keys": [
+                            "degree"
+                          ],
+                          "fields": {
+                            "degree": {
+                              "type": "int"
+                            }
+                          }
+                        },
+                        "attack_common": {
+                          "type": "dict",
+                          "keys": [
+                            "actorID",
+                            "start"
+                          ],
+                          "fields": {
+                            "actorID": {
+                              "type": "int"
+                            },
+                            "start": {
+                              "type": "int"
+                            }
+                          }
+                        },
+                        "attack_topos": {
+                          "type": "dict",
+                          "keys": [
+                            "destPos"
+                          ],
+                          "fields": {
+                            "destPos": {
+                              "type": "dict",
+                              "keys": [
+                                "x",
+                                "y",
+                                "z"
+                              ],
+                              "fields": {
+                                "x": {
+                                  "type": "max_depth"
+                                },
+                                "y": {
+                                  "type": "max_depth"
+                                },
+                                "z": {
+                                  "type": "max_depth"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "attack_actor": {
+                          "type": "dict",
+                          "keys": [
+                            "actorID"
+                          ],
+                          "fields": {
+                            "actorID": {
+                              "type": "int"
+                            }
+                          }
+                        },
+                        "obj_skill": {
+                          "type": "dict",
+                          "keys": [
+                            "skillID",
+                            "actorID",
+                            "slotType"
+                          ],
+                          "fields": {
+                            "skillID": {
+                              "type": "int"
+                            },
+                            "actorID": {
+                              "type": "int"
+                            },
+                            "slotType": {
+                              "type": "int"
+                            }
+                          }
+                        },
+                        "dir_skill": {
+                          "type": "dict",
+                          "keys": [
+                            "skillID",
+                            "actorID",
+                            "slotType",
+                            "degree"
+                          ],
+                          "fields": {
+                            "skillID": {
+                              "type": "int"
+                            },
+                            "actorID": {
+                              "type": "int"
+                            },
+                            "slotType": {
+                              "type": "int"
+                            },
+                            "degree": {
+                              "type": "int"
+                            }
+                          }
+                        },
+                        "pos_skill": {
+                          "type": "dict",
+                          "keys": [
+                            "skillID",
+                            "destPos",
+                            "slotType"
+                          ],
+                          "fields": {
+                            "skillID": {
+                              "type": "int"
+                            },
+                            "destPos": {
+                              "type": "dict",
+                              "keys": [
+                                "x",
+                                "y",
+                                "z"
+                              ],
+                              "fields": {
+                                "x": {
+                                  "type": "max_depth"
+                                },
+                                "y": {
+                                  "type": "max_depth"
+                                },
+                                "z": {
+                                  "type": "max_depth"
+                                }
+                              }
+                            },
+                            "slotType": {
+                              "type": "int"
+                            }
+                          }
+                        },
+                        "learn_skill": {
+                          "type": "dict",
+                          "keys": [
+                            "slotType",
+                            "level"
+                          ],
+                          "fields": {
+                            "slotType": {
+                              "type": "int"
+                            },
+                            "level": {
+                              "type": "int"
+                            }
+                          }
+                        },
+                        "buy_equip": {
+                          "type": "dict",
+                          "keys": [
+                            "equipId",
+                            "obj_id"
+                          ],
+                          "fields": {
+                            "equipId": {
+                              "type": "int"
+                            },
+                            "obj_id": {
+                              "type": "int"
+                            }
+                          }
+                        },
+                        "sell_equip": {
+                          "type": "dict",
+                          "keys": [
+                            "equipIndex"
+                          ],
+                          "fields": {
+                            "equipIndex": {
+                              "type": "int"
+                            }
+                          }
+                        },
+                        "charge_skill": {
+                          "type": "dict",
+                          "keys": [
+                            "slotType",
+                            "state",
+                            "degree"
+                          ],
+                          "fields": {
+                            "slotType": {
+                              "type": "int"
+                            },
+                            "state": {
+                              "type": "int"
+                            },
+                            "degree": {
+                              "type": "int"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "is_in_grass": {
+                    "type": "bool"
+                  },
+                  "take_hurt_infos": {
+                    "type": "list",
+                    "len": 0,
+                    "item": {
+                      "type": "empty"
+                    }
+                  }
+                }
+              }
+            },
+            "npc_states": {
+              "type": "list",
+              "len": 12,
+              "item": {
+                "type": "dict",
+                "keys": [
+                  "config_id",
+                  "runtime_id",
+                  "actor_type",
+                  "sub_type",
+                  "camp",
+                  "behav_mode",
+                  "location",
+                  "forward",
+                  "hp",
+                  "max_hp",
+                  "abilities",
+                  "attack_range",
+                  "attack_target",
+                  "kill_income",
+                  "hit_target_info",
+                  "camp_visible",
+                  "sight_area",
+                  "phy_atk",
+                  "phy_def",
+                  "mgc_atk",
+                  "mgc_def",
+                  "mov_spd",
+                  "atk_spd",
+                  "ep",
+                  "max_ep",
+                  "hp_recover",
+                  "ep_recover",
+                  "phy_armor_hurt",
+                  "mgc_armor_hurt",
+                  "crit_rate",
+                  "crit_effe",
+                  "phy_vamp",
+                  "mgc_vamp",
+                  "cd_reduce",
+                  "ctrl_reduce",
+                  "buff_state",
+                  "hurt_hero_info"
+                ],
+                "fields": {
+                  "config_id": {
+                    "type": "int"
+                  },
+                  "runtime_id": {
+                    "type": "int"
+                  },
+                  "actor_type": {
+                    "type": "int"
+                  },
+                  "sub_type": {
+                    "type": "int"
+                  },
+                  "camp": {
+                    "type": "int"
+                  },
+                  "behav_mode": {
+                    "type": "int"
+                  },
+                  "location": {
+                    "type": "dict",
+                    "keys": [
+                      "x",
+                      "y",
+                      "z"
+                    ],
+                    "fields": {
+                      "x": {
+                        "type": "int"
+                      },
+                      "y": {
+                        "type": "int"
+                      },
+                      "z": {
+                        "type": "int"
+                      }
+                    }
+                  },
+                  "forward": {
+                    "type": "dict",
+                    "keys": [
+                      "x",
+                      "y",
+                      "z"
+                    ],
+                    "fields": {
+                      "x": {
+                        "type": "int"
+                      },
+                      "y": {
+                        "type": "int"
+                      },
+                      "z": {
+                        "type": "int"
+                      }
+                    }
+                  },
+                  "hp": {
+                    "type": "int"
+                  },
+                  "max_hp": {
+                    "type": "int"
+                  },
+                  "abilities": {
+                    "type": "list",
+                    "len": 46,
+                    "item": {
+                      "type": "bool"
+                    }
+                  },
+                  "attack_range": {
+                    "type": "int"
+                  },
+                  "attack_target": {
+                    "type": "int"
+                  },
+                  "kill_income": {
+                    "type": "int"
+                  },
+                  "hit_target_info": {
+                    "type": "list",
+                    "len": 0,
+                    "item": {
+                      "type": "empty"
+                    }
+                  },
+                  "camp_visible": {
+                    "type": "list",
+                    "len": 2,
+                    "item": {
+                      "type": "bool"
+                    }
+                  },
+                  "sight_area": {
+                    "type": "int"
+                  },
+                  "phy_atk": {
+                    "type": "int"
+                  },
+                  "phy_def": {
+                    "type": "int"
+                  },
+                  "mgc_atk": {
+                    "type": "int"
+                  },
+                  "mgc_def": {
+                    "type": "int"
+                  },
+                  "mov_spd": {
+                    "type": "int"
+                  },
+                  "atk_spd": {
+                    "type": "int"
+                  },
+                  "ep": {
+                    "type": "int"
+                  },
+                  "max_ep": {
+                    "type": "int"
+                  },
+                  "hp_recover": {
+                    "type": "int"
+                  },
+                  "ep_recover": {
+                    "type": "int"
+                  },
+                  "phy_armor_hurt": {
+                    "type": "int"
+                  },
+                  "mgc_armor_hurt": {
+                    "type": "int"
+                  },
+                  "crit_rate": {
+                    "type": "int"
+                  },
+                  "crit_effe": {
+                    "type": "int"
+                  },
+                  "phy_vamp": {
+                    "type": "int"
+                  },
+                  "mgc_vamp": {
+                    "type": "int"
+                  },
+                  "cd_reduce": {
+                    "type": "int"
+                  },
+                  "ctrl_reduce": {
+                    "type": "int"
+                  },
+                  "buff_state": {
+                    "type": "dict",
+                    "keys": [
+                      "buff_skills",
+                      "buff_marks"
+                    ],
+                    "fields": {
+                      "buff_skills": {
+                        "type": "list",
+                        "len": 0,
+                        "item": {
+                          "type": "empty"
+                        }
+                      },
+                      "buff_marks": {
+                        "type": "list",
+                        "len": 0,
+                        "item": {
+                          "type": "empty"
+                        }
+                      }
+                    }
+                  },
+                  "hurt_hero_info": {
+                    "type": "list",
+                    "len": 0,
+                    "item": {
+                      "type": "empty"
+                    }
+                  }
+                }
+              }
+            },
+            "bullets": {
+              "type": "list",
+              "len": 2,
+              "item": {
+                "type": "dict",
+                "keys": [
+                  "runtime_id",
+                  "camp",
+                  "source_actor",
+                  "slot_type",
+                  "skill_id",
+                  "location"
+                ],
+                "fields": {
+                  "runtime_id": {
+                    "type": "int"
+                  },
+                  "camp": {
+                    "type": "int"
+                  },
+                  "source_actor": {
+                    "type": "int"
+                  },
+                  "slot_type": {
+                    "type": "int"
+                  },
+                  "skill_id": {
+                    "type": "int"
+                  },
+                  "location": {
+                    "type": "dict",
+                    "keys": [
+                      "x",
+                      "y",
+                      "z"
+                    ],
+                    "fields": {
+                      "x": {
+                        "type": "int"
+                      },
+                      "y": {
+                        "type": "int"
+                      },
+                      "z": {
+                        "type": "int"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "cakes": {
+              "type": "list",
+              "len": 0,
+              "item": {
+                "type": "empty"
+              }
+            },
+            "frame_action": {
+              "type": "dict",
+              "keys": [
+                "dead_action"
+              ],
+              "fields": {
+                "dead_action": {
+                  "type": "list",
+                  "len": 0,
+                  "item": {
+                    "type": "empty"
+                  }
+                }
+              }
+            },
+            "map_state": {
+              "type": "bool"
+            }
+          }
+        }
+      }
+    }
+  }
+}
